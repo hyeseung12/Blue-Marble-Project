@@ -62,7 +62,7 @@ public class Setting {
 				+ "  `golden_key_content` VARCHAR(1000) NULL,\r\n"
 				+ "  PRIMARY KEY (`golden_key_no`));\r\n"
 				+ "");
-
+		
 		// 유저 삭제
 		stmt.execute("DROP USER IF EXISTS 'user'@'127.0.0.1'");
 		
