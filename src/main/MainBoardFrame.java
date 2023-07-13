@@ -25,8 +25,8 @@ public class MainBoardFrame extends CommonFrame {
 
 	public MainBoardFrame() {
 		super("부루마불", 900, 900);
-		drawCountryBoard();
-		drawCountryIcon();
+		drawCountryBoard();				// 보드 기본 틀 그리기
+		drawCountryIcon();				// 보드 이미지 추가
 		panel.setBounds(0, 0, 890, 865);
 		add(panel);
 	}
@@ -40,15 +40,19 @@ public class MainBoardFrame extends CommonFrame {
 			button[i].setPreferredSize(new Dimension(60, 60));
 		}
 
+		// 빨간색 라인 보드 그리기
 		for (int i = 6; i >= 0; i--)
 			componentLayoutPosition(button[i], i, 8);
 
+		// 주황색 라인 보드 그리기
 		for (int i = 11; i > 6; i--)
 			componentLayoutPosition(button[i], 0, i - 4);
 
+		// 초록색 라인 보드 그리기
 		for (int i = 12; i < 19; i++)
 			componentLayoutPosition(button[i], i - 12, 2);
 
+		// 파랑색 라인 보드 그리기
 		for (int i = 19; i < button.length; i++)
 			componentLayoutPosition(button[i], 6, i - 16);
 	}
@@ -73,6 +77,7 @@ public class MainBoardFrame extends CommonFrame {
 		Image goldenKeyImg = new ImageIcon("./images/황금열쇠.png").getImage();
 		Image goldenKeyNewImg = goldenKeyImg.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
 		
+		// 빨간색 라인 이미지 추가
 		for (int i = 6; i >= 0; i--) {
 			if (i == 3) {
 				button[i].setIcon(new ImageIcon(goldenKeyNewImg));
@@ -85,6 +90,7 @@ public class MainBoardFrame extends CommonFrame {
 			}
 		}
 
+		// 주황색 라인 이미지 추가
 		for (int i = 7; i <= 11; i++) {
 			if (i == 9)
 				button[i].setIcon(new ImageIcon(goldenKeyNewImg));
@@ -94,7 +100,8 @@ public class MainBoardFrame extends CommonFrame {
 				button[i].setIcon(new ImageIcon(newimg));
 			}
 		}
-
+		
+		// 초록색 라인 이미지 추가
 		for (int i = 12; i < 19; i++) {
 			if (i == 15)
 				button[i].setIcon(new ImageIcon(goldenKeyNewImg));
@@ -105,6 +112,7 @@ public class MainBoardFrame extends CommonFrame {
 			}
 		}
 
+		// 파랑색 라인 이미지 추가
 		for (int i = 19; i < button.length; i++) {
 			if (i == 21)
 				button[i].setIcon(new ImageIcon(goldenKeyNewImg));
