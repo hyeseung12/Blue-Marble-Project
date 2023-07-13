@@ -74,12 +74,11 @@ public class MainBoardFrame extends CommonFrame {
 		
 		// TODO : 각 사진의 프레임이 깨지는 현상 고치기
 		
-		Image goldenKeyImg = new ImageIcon("./images/황금열쇠.png").getImage();
-		Image goldenKeyNewImg = goldenKeyImg.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
-		
 		// 빨간색 라인 이미지 추가
 		for (int i = 6; i >= 0; i--) {
 			if (i == 3) {
+				Image goldenKeyImg = new ImageIcon("./images/황금열쇠1.png").getImage();
+				Image goldenKeyNewImg = goldenKeyImg.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
 				button[i].setIcon(new ImageIcon(goldenKeyNewImg));
 			}
 			
@@ -92,8 +91,11 @@ public class MainBoardFrame extends CommonFrame {
 
 		// 주황색 라인 이미지 추가
 		for (int i = 7; i <= 11; i++) {
-			if (i == 9)
+			if (i == 9) {
+				Image goldenKeyImg = new ImageIcon("./images/황금열쇠2.png").getImage();
+				Image goldenKeyNewImg = goldenKeyImg.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
 				button[i].setIcon(new ImageIcon(goldenKeyNewImg));
+			}
 			else {
 				Image img = new ImageIcon("./images/" + (18 - i) + ".png").getImage();
 				Image newimg = img.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
@@ -103,8 +105,11 @@ public class MainBoardFrame extends CommonFrame {
 		
 		// 초록색 라인 이미지 추가
 		for (int i = 12; i < 19; i++) {
-			if (i == 15)
+			if (i == 15) {
+				Image goldenKeyImg = new ImageIcon("./images/황금열쇠3.png").getImage();
+				Image goldenKeyNewImg = goldenKeyImg.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
 				button[i].setIcon(new ImageIcon(goldenKeyNewImg));
+			}
 			else {
 				Image img = new ImageIcon("./images/" + i + ".png").getImage();
 				Image newimg = img.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
@@ -114,8 +119,11 @@ public class MainBoardFrame extends CommonFrame {
 
 		// 파랑색 라인 이미지 추가
 		for (int i = 19; i < button.length; i++) {
-			if (i == 21)
+			if (i == 21) {
+				Image goldenKeyImg = new ImageIcon("./images/황금열쇠4.png").getImage();
+				Image goldenKeyNewImg = goldenKeyImg.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
 				button[i].setIcon(new ImageIcon(goldenKeyNewImg));
+			}
 			else {
 				Image img = new ImageIcon("./images/" + i + ".png").getImage();
 				Image newimg = img.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
