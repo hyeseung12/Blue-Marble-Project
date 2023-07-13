@@ -29,21 +29,16 @@ public class CommonFrame extends JFrame {
     }
 
     /**
-     * 기존 setBounds 메소드에서 r,g,b 색상과 공통적으로 사용할 폰트 기능을 추가했습니다.
+     * 기존 setBounds 메서드를 실행시킨 후 해당 객체를 리턴시켜주는 메소드입니다.
      * @param comp, JComponent
      * @param x, int
      * @param y, int
      * @param width, int
      * @param height, int
-     * @param r, int
-     * @param g, int
-     * @param b, int
      * @return JComponent
      */
-    JComponent setBounds(JComponent comp, int x, int y, int width, int height, int r, int g, int b) {
+    public static JComponent setBounds(JComponent comp, int x, int y, int width, int height) {
         comp.setBounds(x, y, width, height);
-        comp.setFont(new Font("굴림", Font.PLAIN, 20));
-        comp.setBackground(new Color(r, g, b));
         return comp;
     }
 
