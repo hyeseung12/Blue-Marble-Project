@@ -25,6 +25,8 @@ public class Setting {
 				+ "  PRIMARY KEY (`player_no`));\r\n"
 				+ "");
 
+		System.out.println("player 테이블 생성");
+		
 		// country 테이블 생성
 		stmt.execute("CREATE TABLE `blue-marble`.`country` (\r\n"
 				+ "  `country_no` INT NOT NULL AUTO_INCREMENT,\r\n"
@@ -39,6 +41,8 @@ public class Setting {
 				+ "    ON DELETE CASCADE\r\n"
 				+ "    ON UPDATE CASCADE);\r\n"
 				+ "");
+		
+		System.out.println("country 테이블 생성");
 		
 		// country_price_toll 테이블 생성
 		stmt.execute("CREATE TABLE `blue-marble`.`country_price_toll` (\r\n"
@@ -56,12 +60,16 @@ public class Setting {
 				+ "    ON UPDATE CASCADE);\r\n"
 				+ "");
 		
+		System.out.println("country_price_toll 테이블 생성");
+		
 		stmt.execute("CREATE TABLE `blue-marble`.`golden_key` (\r\n"
 				+ "  `golden_key_no` INT NOT NULL AUTO_INCREMENT,\r\n"
 				+ "  `golden_key_name` VARCHAR(500) NULL,\r\n"
 				+ "  `golden_key_content` VARCHAR(1000) NULL,\r\n"
 				+ "  PRIMARY KEY (`golden_key_no`));\r\n"
 				+ "");
+		
+		System.out.println("golden_key 테이블 생성");
 		
 		// 유저 삭제
 		stmt.execute("DROP USER IF EXISTS 'user'@'127.0.0.1'");
@@ -72,7 +80,7 @@ public class Setting {
 		// 유저 권한 GRANT + 권한
 		stmt.execute("GRANT SELECT, INSERT, UPDATE, DELETE ON `blue-marble`.* TO 'user'@'127.0.0.1'");
 		
-		System.out.println("사용자 생성");
+		System.out.println("user 사용자 생성");
 		
 		stmt.execute("USE `blue-marble`");
 		
@@ -82,6 +90,7 @@ public class Setting {
 				+ " LINES TERMINATED BY '\\r\n'"
 				+ " IGNORE 1 LINES");
 		
+		System.out.println("황금열쇠 txt 파일 데이터 추가");
 	}
 	
 	public static void main(String[] args) {
