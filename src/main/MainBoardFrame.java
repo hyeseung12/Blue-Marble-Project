@@ -20,13 +20,13 @@ import common.CommonFrame;
  *
  */
 public class MainBoardFrame extends CommonFrame {
-	JPanel panel = new JPanel(new GridBagLayout());
-	JButton[] button = new JButton[24];
+	private JPanel panel = new JPanel(new GridBagLayout());
+	private JButton[] button = new JButton[24];
 
 	public MainBoardFrame() {
 		super("부루마불", 900, 900);
-		drawCountryBoard();				// 보드 기본 틀 그리기
-		drawCountryIcon();				// 보드 이미지 추가
+		drawBoardFrame(); // 보드 기본 틀 그리기
+		drawBoardIcon(); // 보드 이미지 추가
 		panel.setBounds(0, 0, 890, 865);
 		add(panel);
 	}
@@ -34,7 +34,7 @@ public class MainBoardFrame extends CommonFrame {
 	/**
 	 * 보드의 기본 틀을 그리는 메소드 입니다.
 	 */
-	public void drawCountryBoard() {
+	public void drawBoardFrame() {
 		for (int i = 0; i < button.length; i++) {
 			button[i] = new JButton();
 			button[i].setPreferredSize(new Dimension(60, 60));
@@ -57,7 +57,14 @@ public class MainBoardFrame extends CommonFrame {
 			componentLayoutPosition(button[i], 6, i - 16);
 	}
 
-	void componentLayoutPosition(Component component, int x, int y) {
+	/**
+	 * GridBagLayout에 해당 component를 그리는 메소드입니다.
+	 * 
+	 * @param component, Component
+	 * @param x,         int
+	 * @param y,         int
+	 */
+	private void componentLayoutPosition(Component component, int x, int y) {
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.BOTH;
 		constraints.weightx = 0.1;
@@ -70,66 +77,38 @@ public class MainBoardFrame extends CommonFrame {
 	/**
 	 * 보드에 이미지를 삽입하는 메소드입니다.
 	 */
-	public void drawCountryIcon() {
+	public void drawBoardIcon() {
+		int[] goldenKeyImgPosition = { 3, 9, 15, 21 };
 		
-		// TODO : 각 사진의 프레임이 깨지는 현상 고치기
-		
-		// 빨간색 라인 이미지 추가
-		for (int i = 6; i >= 0; i--) {
-			if (i == 3) {
-				Image goldenKeyImg = new ImageIcon("./images/황금열쇠1.png").getImage();
-				Image goldenKeyNewImg = goldenKeyImg.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
-				button[i].setIcon(new ImageIcon(goldenKeyNewImg));
-			}
-			
-			else {
-				Image img = new ImageIcon("./images/" + (6 - i) + ".png").getImage();
-				Image newimg = img.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
-				button[i].setIcon(new ImageIcon(newimg));
-			}
+		// 황금열쇠 이미지 삽입
+		for (int i = 1; i <= 4; i++) {
+			Image goldenKeyImg = new ImageIcon("./images/황금열쇠" + i + ".png").getImage();
+			Image goldenKeyNewImg = goldenKeyImg.getScaledInstance(130, 130, Image.SCALE_SMOOTH);
+			button[goldenKeyImgPosition[i - 1]].setIcon(new ImageIcon(goldenKeyNewImg));
 		}
 
-		// 주황색 라인 이미지 추가
-		for (int i = 7; i <= 11; i++) {
-			if (i == 9) {
-				Image goldenKeyImg = new ImageIcon("./images/황금열쇠2.png").getImage();
-				Image goldenKeyNewImg = goldenKeyImg.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
-				button[i].setIcon(new ImageIcon(goldenKeyNewImg));
-			}
-			else {
-				Image img = new ImageIcon("./images/" + (18 - i) + ".png").getImage();
-				Image newimg = img.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
+		// 나라 및 나머지 이미지 삽입
+		for (int i = 0; i < button.length; i++) {
+			if (button[i].getIcon() == null) {
+				Image img = new ImageIcon("./images/" + getImageFileName(i) + ".png").getImage();
+				Image newimg = img.getScaledInstance(130, 130, Image.SCALE_SMOOTH);
 				button[i].setIcon(new ImageIcon(newimg));
 			}
 		}
-		
-		// 초록색 라인 이미지 추가
-		for (int i = 12; i < 19; i++) {
-			if (i == 15) {
-				Image goldenKeyImg = new ImageIcon("./images/황금열쇠3.png").getImage();
-				Image goldenKeyNewImg = goldenKeyImg.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
-				button[i].setIcon(new ImageIcon(goldenKeyNewImg));
-			}
-			else {
-				Image img = new ImageIcon("./images/" + i + ".png").getImage();
-				Image newimg = img.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
-				button[i].setIcon(new ImageIcon(newimg));
-			}
-		}
+	}
 
-		// 파랑색 라인 이미지 추가
-		for (int i = 19; i < button.length; i++) {
-			if (i == 21) {
-				Image goldenKeyImg = new ImageIcon("./images/황금열쇠4.png").getImage();
-				Image goldenKeyNewImg = goldenKeyImg.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
-				button[i].setIcon(new ImageIcon(goldenKeyNewImg));
-			}
-			else {
-				Image img = new ImageIcon("./images/" + i + ".png").getImage();
-				Image newimg = img.getScaledInstance(130, 130, java.awt.Image.SCALE_SMOOTH);
-				button[i].setIcon(new ImageIcon(newimg));
-			}
-		}
+	/**
+	 * 인덱스에 따른 파일의 이름을 리턴해주는 메소드입니다.
+	 * @param index, int
+	 * @return String
+	 */
+	private String getImageFileName(int index) {
+		if (index >= 0 && index <= 6)
+			return Integer.toString(6 - index);
+		else if (index >= 7 && index <= 11)
+			return Integer.toString(18 - index);
+		else
+			return Integer.toString(index);
 	}
 
 	public static void main(String[] args) {
