@@ -64,10 +64,9 @@ public class Setting {
 		
 		stmt.execute("CREATE TABLE `blue-marble`.`golden_key` (\r\n"
 				+ "  `golden_key_no` INT NOT NULL AUTO_INCREMENT,\r\n"
-				+ "  `golden_key_name` VARCHAR(500) NULL,\r\n"
+				+ "  `golden_key_title` VARCHAR(100) NULL,\r\n"
 				+ "  `golden_key_content` VARCHAR(1000) NULL,\r\n"
-				+ "  PRIMARY KEY (`golden_key_no`));\r\n"
-				+ "");
+				+ "  PRIMARY KEY (`golden_key_no`));");
 		
 		System.out.println("golden_key 테이블 생성");
 		
