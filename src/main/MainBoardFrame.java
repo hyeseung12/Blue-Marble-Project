@@ -79,12 +79,12 @@ public class MainBoardFrame extends CommonFrame {
 	 */
 	public void drawBoardIcon() {
 		int[] goldenKeyImgPosition = { 3, 9, 15, 21 };
-		
+
 		// 황금열쇠 이미지 삽입
-		for (int i = 1; i <= 4; i++) {
+		for (int i = 0; i < 4; i++) {
 			Image goldenKeyImg = new ImageIcon("./images/황금열쇠" + i + ".png").getImage();
 			Image goldenKeyNewImg = goldenKeyImg.getScaledInstance(130, 130, Image.SCALE_SMOOTH);
-			button[goldenKeyImgPosition[i - 1]].setIcon(new ImageIcon(goldenKeyNewImg));
+			button[goldenKeyImgPosition[i]].setIcon(new ImageIcon(goldenKeyNewImg));
 		}
 
 		// 나라 및 나머지 이미지 삽입
@@ -99,6 +99,7 @@ public class MainBoardFrame extends CommonFrame {
 
 	/**
 	 * 인덱스에 따른 파일의 이름을 리턴해주는 메소드입니다.
+	 * 
 	 * @param index, int
 	 * @return String
 	 */
