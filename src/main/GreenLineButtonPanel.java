@@ -1,8 +1,10 @@
 package main;
 
-import java.awt.Dimension;
+import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
+
+import common.CommonPanel;
 
 /**
  * 초록색 라인의 나라들을 표시할 패널입니다.
@@ -13,6 +15,13 @@ import javax.swing.JPanel;
  */
 public class GreenLineButtonPanel extends JPanel {
 	public GreenLineButtonPanel() {
-		setPreferredSize(new Dimension(900, 130));
+		setLayout(new BorderLayout());
+		add(CommonPanel.setCountryButtonImage(
+				/* panelW */900,
+				/* panelH */145,
+				/* buttonW */119,
+				/* buttonH */145,
+				/* buttonIdx */7,
+				/* start */12));
 	}
 }

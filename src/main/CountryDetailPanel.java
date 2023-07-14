@@ -1,5 +1,7 @@
 package main;
 
+import java.awt.FlowLayout;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,6 +17,7 @@ public class CountryDetailPanel extends JPanel {
 	 * 기본 패널은 보드 이미지를 보여줍니다.
 	 */
 	public CountryDetailPanel() {
+		setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 		CountryDetailPanel.this.add(new JLabel(new ImageIcon("./images/부루마불.png")));
 	}
 

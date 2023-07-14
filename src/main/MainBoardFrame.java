@@ -3,6 +3,7 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -22,21 +23,22 @@ import common.CommonFrame;
  */
 public class MainBoardFrame extends CommonFrame {
 	private JPanel countryDetailPanel = new CountryDetailPanel();
-	
+
 	// BorderLayout으로 각각의 빨강, 주황, 초록, 파랑 라인의 나라 panel을 생성하였습니다.
 	public MainBoardFrame() {
 		super("부루마불", 900, 900);
-		
+
 		setLayout(new BorderLayout());
-		
+
+		add(countryDetailPanel);
 		add(new RedLineButtonPanel(), "South");
 		add(new OrangeLineButtonPanel(), "West");
 		add(new GreenLineButtonPanel(), "North");
 		add(new BlueLineButtonPanel(), "East");
-		add(countryDetailPanel);
 	}
 
 	public static void main(String[] args) {
 		new MainBoardFrame().setVisible(true);
 	}
+
 }
