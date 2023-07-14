@@ -7,12 +7,14 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import common.CommonFrame;
+import vo.ButtonListVO;
 
 /**
  * 메인 게임 보드를 그리는 클래스입니다.
@@ -27,15 +29,16 @@ public class MainBoardFrame extends CommonFrame {
 	// BorderLayout으로 각각의 빨강, 주황, 초록, 파랑 라인의 나라 panel을 생성하였습니다.
 	public MainBoardFrame() {
 		super("부루마불", 900, 900);
-
+		
 		setLayout(new BorderLayout());
-
+		
 		add(countryDetailPanel);
 		add(new RedLineButtonPanel(), "South");
 		add(new OrangeLineButtonPanel(), "West");
 		add(new GreenLineButtonPanel(), "North");
 		add(new BlueLineButtonPanel(), "East");
-	}
+ 	}
+	
 
 	public static void main(String[] args) {
 		new MainBoardFrame().setVisible(true);
