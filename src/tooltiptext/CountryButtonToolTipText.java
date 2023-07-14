@@ -29,5 +29,7 @@ public class CountryButtonToolTipText {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		ButtonList.setArr(buttonList);
 	}
 }
