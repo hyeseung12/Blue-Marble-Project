@@ -27,7 +27,7 @@ public class CommonFrame extends JFrame {
 	 */
 	static {
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/2023지방_2?serverTimezone=UTC", "user", "1234");
+			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/blue-marble?serverTimezone=UTC", "user", "1234");
 			stmt = con.createStatement();
 		} catch (SQLException e) {
 			e.printStackTrace();
