@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import vo.ButtonListVO;
+import list.ButtonList;
 
 /**
  * LinePanel클래스의 공통 부분을 모아놓은 클래스입니다.
@@ -42,9 +42,9 @@ public class CommonPanel {
 			Image img = new ImageIcon("./images/" + (start++) + ".png").getImage().getScaledInstance(145, 145,
 					java.awt.Image.SCALE_SMOOTH);
 			
-			/// 각 버튼 생성 후 list에 해당 버튼 추가
+			// 각 버튼 생성 후 list에 해당 버튼 추가
 			btn = new JButton(new ImageIcon(img));
-			ButtonListVO.insertArr(btn);
+			ButtonList.insertArr(btn);
 			
 			btn.setPreferredSize(new Dimension(buttonW, buttonH));
 			panel.add(btn);

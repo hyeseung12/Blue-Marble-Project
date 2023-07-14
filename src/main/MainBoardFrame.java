@@ -14,7 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import common.CommonFrame;
-import vo.ButtonListVO;
+import list.ButtonList;
+import tooltiptext.CountryButtonToolTipText;
 
 /**
  * 메인 게임 보드를 그리는 클래스입니다.
@@ -37,6 +38,8 @@ public class MainBoardFrame extends CommonFrame {
 		add(new OrangeLineButtonPanel(), "West");
 		add(new GreenLineButtonPanel(), "North");
 		add(new BlueLineButtonPanel(), "East");
+
+		new CountryButtonToolTipText();
  	}
 	
 

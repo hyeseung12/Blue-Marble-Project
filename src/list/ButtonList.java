@@ -1,10 +1,10 @@
-package vo;
+package list;
 
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 
-public class ButtonListVO {
+public class ButtonList {
 	private static ArrayList<JButton> arr = new ArrayList<>();
 
 	public static ArrayList<JButton> getArr() {
@@ -12,7 +12,7 @@ public class ButtonListVO {
 	}
 
 	public void setArr(ArrayList<JButton> arr) {
-		ButtonListVO.arr = arr;
+		ButtonList.arr = arr;
 	}
 	
 	public static void insertArr(JButton btn) {
