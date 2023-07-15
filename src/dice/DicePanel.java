@@ -10,6 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import list.DiceNumberList;
+
 /**
  * 주사위를 돌릴 패널입니다.
  * 
@@ -18,12 +20,9 @@ import javax.swing.JPanel;
  */
 public class DicePanel extends JPanel {
 	private static JButton[] diceBtn = new JButton[2];
-	public static int diceNum1 = (int) (Math.random() * 6 + 1);
-	public static int diceNum2 = (int) (Math.random() * 6 + 1);
 
 	public DicePanel() {
 		setLayout(new FlowLayout(FlowLayout.CENTER, 48, 30));
-		setPreferredSize(new Dimension(400, 200));
 
 		for (int i = 0; i < diceBtn.length; i++) {
 			diceBtn[i] = new JButton();
@@ -44,6 +43,12 @@ public class DicePanel extends JPanel {
 	public static void randomThreadDice() {
 		int imgSize = 190;
 
+		int diceNum1 = (int)(Math.random() * 6 + 1);
+		int diceNum2 = (int)(Math.random() * 6 + 1);
+		
+		DiceNumberList.setDiceNum1(diceNum1);
+		DiceNumberList.setDiceNum2(diceNum2);
+		
 		Image[] img = {
 				new ImageIcon("./images/dice" + diceNum1 + ".png").getImage().getScaledInstance(imgSize, imgSize,
 						java.awt.Image.SCALE_SMOOTH),
