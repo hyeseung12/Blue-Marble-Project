@@ -25,25 +25,26 @@ public class DicePanel extends JPanel {
 		setBackground(new Color(255, 255, 255, 255));
 		
 		JButton[] diceBtn = new JButton[2];
-
-		for(var dice : diceBtn) {
-			dice = new JButton();
-			dice.setOpaque(true);
-			dice.setContentAreaFilled(true);
-			dice.setBorderPainted(false);
-			dice.setFocusPainted(false);
-			dice.setPreferredSize(new Dimension(110, 100));
-			add(dice);
-		}
 		
 		int imgSize = 188;
-		Image img1 = new ImageIcon("./images/dice" + diceNum1 + ".png").getImage().getScaledInstance(imgSize, imgSize,
-				java.awt.Image.SCALE_SMOOTH);
 		
-		Image img2 = new ImageIcon("./images/dice" + diceNum2 + ".png").getImage().getScaledInstance(imgSize, imgSize,
-				java.awt.Image.SCALE_SMOOTH);
-		
-		diceBtn[0].setIcon(new ImageIcon(img1));
-		diceBtn[1].setIcon(new ImageIcon(img2));
+		Image[] img = { 
+				new ImageIcon("./images/dice" + diceNum1 + ".png").getImage().getScaledInstance(imgSize, imgSize,
+				java.awt.Image.SCALE_SMOOTH),
+				
+				new ImageIcon("./images/dice" + diceNum2 + ".png").getImage().getScaledInstance(imgSize, imgSize,
+						java.awt.Image.SCALE_SMOOTH) 
+				};
+
+		for(int i = 0; i < diceBtn.length; i++) {
+			diceBtn[i] = new JButton();
+			diceBtn[i].setOpaque(true);
+			diceBtn[i].setContentAreaFilled(true);
+			diceBtn[i].setBorderPainted(false);
+			diceBtn[i].setFocusPainted(false);
+			diceBtn[i].setPreferredSize(new Dimension(110, 100));
+			add(diceBtn[i]);
+			diceBtn[i].setIcon(new ImageIcon(img[i]));
+		}
 	}
 }
