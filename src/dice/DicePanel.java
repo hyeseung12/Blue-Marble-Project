@@ -23,7 +23,6 @@ public class DicePanel extends JPanel {
 
 	public DicePanel() {
 		setLayout(new FlowLayout(FlowLayout.CENTER, 48, 30));
-		setPreferredSize(new Dimension(400, 200));
 
 		for (int i = 0; i < diceBtn.length; i++) {
 			diceBtn[i] = new JButton();
