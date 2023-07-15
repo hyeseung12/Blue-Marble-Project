@@ -1,20 +1,10 @@
 package main;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Image;
-import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import common.CommonFrame;
-import list.ButtonList;
 import tooltiptext.CountryButtonToolTipText;
 
 /**
