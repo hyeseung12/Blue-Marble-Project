@@ -57,8 +57,8 @@ public class DicePanel extends JPanel {
 						java.awt.Image.SCALE_SMOOTH) };
 
 		Timer timer = new Timer();
-		int delay = 100; // 이미지 변경 간격 (0.2초)
-		int duration = 2000; // 전체 동작 시간 (2초)
+		int delay = 100; // 이미지 변경 간격 (0.1초)
+		int duration = 1100; // 전체 동작 시간 (1.1초)
 		int steps = duration / delay; // 이미지 변경 횟수
 
 		TimerTask task = new TimerTask() {
