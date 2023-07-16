@@ -18,6 +18,7 @@ import dice.DicePanel;
  * @version 1.0
  */
 public class CountryDetailPanel extends JPanel {
+	public static JButton diceClickBtn = new JButton("주사위 돌리기");
 	/**
 	 * 기본 패널은 보드 이미지를 보여줍니다.
 	 */
@@ -31,7 +32,6 @@ public class CountryDetailPanel extends JPanel {
 		add(img, BorderLayout.CENTER);
 
 		// 주사위 돌리기 버튼 생성
-		JButton diceClickBtn = new JButton("주사위 돌리기");
 		diceClickBtn.setBackground(Color.red);
 		diceClickBtn.setForeground(Color.white);
 		diceClickBtn.setBounds(210, 470, 150, 50);

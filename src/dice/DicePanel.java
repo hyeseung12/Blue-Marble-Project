@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import country.CountryDetailPanel;
 import list.DiceNumberList;
 
 /**
@@ -81,6 +82,7 @@ public class DicePanel extends JPanel {
 
 					// TimerTask 종료
 					cancel();
+					CountryDetailPanel.diceClickBtn.setVisible(true);
 				}
 			}
 		};
