@@ -13,6 +13,7 @@ import javax.swing.JLabel;
  */
 public class PlayerList {
 	private static ArrayList<JLabel> playerList = new ArrayList<>();
+	private static ArrayList<Integer> playerPositionList = new ArrayList<>();
 
 	/**
 	 * player list를 반환하는 메소드입니다.
@@ -28,8 +29,8 @@ public class PlayerList {
 	 * 
 	 * @param ArrayList<JLabel> - 초기화 할 list
 	 */
-	public static void setPlayerList(ArrayList<JLabel> player) {
-		PlayerList.playerList = player;
+	public static void setPlayerList(ArrayList<JLabel> playerList) {
+		PlayerList.playerList = playerList;
 	}
 
 	/**
@@ -42,12 +43,50 @@ public class PlayerList {
 	}
 
 	/**
-	 * 해당 index에 맞는 player를 찾아 반환합니다.
+	 * 해당 index에 맞는 player를 찾아 반환하는 메소드입니다.
 	 * 
 	 * @param index, int - 해당 list값의 인덱스
 	 * @return JLabel
 	 */
 	public static JLabel findPlayer(int index) {
 		return playerList.get(index);
+	}
+
+	/**
+	 * player position list를 반환하는 메소드입니다.
+	 * 
+	 * @return ArrayList<Integer>
+	 */
+	public static ArrayList<Integer> getPlayerPositionList() {
+		return playerPositionList;
+	}
+
+	/**
+	 * player position list를 초기화하는 메소드입니다.
+	 * 
+	 * @param playerPositionList, ArrayList<Integer> - 초기화 할 list
+	 */
+	public static void setPlayerPositionList(ArrayList<Integer> playerPositionList) {
+		PlayerList.playerPositionList = playerPositionList;
+	}
+
+	/**
+	 * 해당 index에 맞는 player의 위치 값을 변경하는 메소드입니다.
+	 * 
+	 * @param index,    int - 변경할 플레이어 index
+	 * @param position, int - 변경할 위치 값
+	 */
+	public static void setPlayerPosition(int index, int position) {
+		PlayerList.playerPositionList.set(index, position);
+	}
+
+	/**
+	 * 해당 index에 맞는 player의 위치 값을 반환하는 메소드입니다.
+	 * 
+	 * @param index - 위치 값 찾을 플레이어 index
+	 * @return int
+	 */
+	public static int findPlayerPosition(int index) {
+		return playerPositionList.get(index);
 	}
 }
