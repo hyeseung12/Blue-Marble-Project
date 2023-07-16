@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import list.CountryButtonList;
+import list.PlayerList;
  
 /**
  * 각각의 플레이어 패널입니다.
@@ -43,6 +44,7 @@ public class PlayerPanel extends JPanel {
 			label[i] = new JLabel(new ImageIcon(img));
             
 			label[i].setBounds(coordinates[i][0], coordinates[i][1], 40, 40);
+			PlayerList.insertPlayer(label[i]);
 			add(label[i]);
 		}
 	}
