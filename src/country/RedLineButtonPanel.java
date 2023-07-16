@@ -5,6 +5,8 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 import common.CommonCountry;
+import list.ButtonList;
+import player.PlayerPanel;
 
 /**
  * 빨강색 라인의 나라들을 표시할 패널입니다.
