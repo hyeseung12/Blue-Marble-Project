@@ -1,4 +1,4 @@
-package tooltiptext;
+package country;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,11 +15,11 @@ import list.ButtonList;
  */
 public class CountryButtonToolTipText {
 	public CountryButtonToolTipText() {
-		var buttonList = ButtonList.getArr();	// 버튼의 리스트
+		var buttonList = ButtonList.getArr(); // 버튼의 리스트
 		int i = 0;
 		try {
 			BufferedReader bufReader = new BufferedReader(
-					new FileReader(new File("./datafiles/CountryButtonToolTipList.txt")));	// tool tip에 넣을 txt 내용 가져옴
+					new FileReader(new File("./datafiles/CountryButtonToolTipList.txt"))); // tool tip에 넣을 txt 내용 가져옴
 			String line = "";
 			while ((line = bufReader.readLine()) != null) {
 				buttonList.get(i++).setToolTipText(line);
@@ -29,7 +29,7 @@ public class CountryButtonToolTipText {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		ButtonList.setArr(buttonList);
 	}
 }

@@ -11,14 +11,14 @@ import javax.swing.JPanel;
  * @version : 1.0
  * @author  : https://eunbc-2020.tistory.com/54
  */
-public class CommonImagePanel extends JPanel {
+public class CommonImage extends JPanel {
     private Image img;
 
     /**
      * 이미지의 환경을 구성해주는 메소드 입니다.
      * @param img
      */
-    public CommonImagePanel(Image img) {
+    public CommonImage(Image img) {
         this.img = img;
         setSize(new Dimension(img.getWidth(null), img.getHeight(null)));
         setPreferredSize(new Dimension(img.getWidth(null), img.getHeight(null)));
