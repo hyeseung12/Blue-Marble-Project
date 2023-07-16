@@ -59,7 +59,9 @@ public class CommonCountry {
 			CountryButtonList.insertCountryButton(btn);
 
 			btn.setPreferredSize(new Dimension(buttonW, buttonH));
-			panel.add(btn);
+			
+			if(start <= 12) panel.add(btn, 0);
+			else panel.add(btn);
 		}
 
 		return panel;
