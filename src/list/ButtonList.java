@@ -14,22 +14,39 @@ import javax.swing.JButton;
 public class ButtonList {
 	private static ArrayList<JButton> arr = new ArrayList<>();
 
-	// list 반환
+	/**
+	 * 나라 button list를 반환하는 메소드입니다.
+	 * 
+	 * @return ArrayList<JButton>
+	 */
 	public static ArrayList<JButton> getArr() {
 		return arr;
 	}
 
-	// list 초기화
+	/**
+	 * 나라 button list를 초기화하는 메소드입니다.
+	 * 
+	 * @param ArrayList<JButton> - 초기화 할 list
+	 */
 	public static void setArr(ArrayList<JButton> arr) {
 		ButtonList.arr = arr;
 	}
 
-	// list에 값 추가
+	/**
+	 * 나라 button list에 버튼을 추가하는 메소드입니다.
+	 * 
+	 * @param JButton - 추가할 버튼
+	 */
 	public static void insertArr(JButton btn) {
 		arr.add(btn);
 	}
 
-	// 해당 index에 맞는 list 값 반환
+	/**
+	 * 해당 index에 맞는 list값을 찾아 반환합니다.
+	 * 
+	 * @param index, int - 해당 list값의 인덱스
+	 * @return JButton
+	 */
 	public static JButton findButtonArr(int index) {
 		return arr.get(index);
 	}

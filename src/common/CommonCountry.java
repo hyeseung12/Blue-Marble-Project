@@ -11,12 +11,24 @@ import javax.swing.JPanel;
 import list.ButtonList;
 
 /**
- * LinePanel클래스의 공통 부분을 모아놓은 클래스입니다.
+ * panel클래스가 공통적으로 가지고 있어야 할 것들을 갖고 있는 클래스입니다.
  * 
  * @author MsEmily1020
  * @version 1.0
  */
-public class CommonPanel {
+public class CommonCountry {
+
+	/**
+	 * panel에 나라들을 넣어 반환하는 메소드입니다.
+	 * 
+	 * @param panelW,    int - 패널의 가로 길이
+	 * @param panelH,    int - 패널의 세로 길이
+	 * @param buttonW,   int - 버튼 가로길이
+	 * @param buttonH,   int - 버튼 세로길이
+	 * @param buttonIdx, int - panel에 들어갈 버튼 수
+	 * @param start,     int - 이미지 시작 인덱스
+	 * @return JPanel
+	 */
 	public static JPanel setCountryButtonImage(int panelW, int panelH, int buttonW, int buttonH, int buttonIdx,
 			int start) {
 		// panel 생성
@@ -41,11 +53,11 @@ public class CommonPanel {
 			// 이미지 크기 조정
 			Image img = new ImageIcon("./images/" + (start++) + ".png").getImage().getScaledInstance(145, 145,
 					java.awt.Image.SCALE_SMOOTH);
-			
+
 			// 각 버튼 생성 후 list에 해당 버튼 추가
 			btn = new JButton(new ImageIcon(img));
 			ButtonList.insertArr(btn);
-			
+
 			btn.setPreferredSize(new Dimension(buttonW, buttonH));
 			panel.add(btn);
 		}

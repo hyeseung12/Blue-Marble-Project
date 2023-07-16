@@ -12,7 +12,7 @@ import javax.sound.sampled.Clip;
 import javax.swing.JFrame;
 
 /**
- * 모든 Frame클래스가 공통적으로 가지고 있어야 할 것들을 갖고 있는 클래스입니다.
+ * frame클래스가 공통적으로 가지고 있어야 할 것들을 갖고 있는 클래스입니다.
  * 
  * @version : 1.0
  * @author : MsEmily1020
@@ -39,9 +39,9 @@ public class CommonFrame extends JFrame {
 	 * JFrame을 생성해주는 CommonFrame의 생성자입니다. (extends로 상속 받았을 때 super()를 가장 먼저 불러와서 제목과
 	 * 크기를 지정해줘야 합니다.)
 	 * 
-	 * @param title, String
-	 * @param w,     int
-	 * @param h,     int
+	 * @param title, String - Frame의 제목
+	 * @param w,     int - Frame 가로 길이
+	 * @param h,     int - Frame 세로 길이
 	 */
 	public CommonFrame(String title, int w, int h) {
 		setTitle(title);
@@ -55,8 +55,8 @@ public class CommonFrame extends JFrame {
 	/**
 	 * String sql로 받은 sql 쿼리문을 돌려 값을 리턴해주는 메소드입니다.
 	 * 
-	 * @param sql, String
-	 * @param p,   Object...
+	 * @param sql, String - 쿼리문
+	 * @param Object... - 쿼리문 ?의 데이터값
 	 * @return ResultSet
 	 */
 	public static ResultSet getRs(String sql, Object... p) {
@@ -76,8 +76,8 @@ public class CommonFrame extends JFrame {
 	/**
 	 * String 값을 DB에 업데이트해줍니다. 해당 DB의 업데이트 generated key를 반환합니다.
 	 * 
-	 * @param sql, String
-	 * @param p,   Object...
+	 * @param sql, String - 쿼리문
+	 * @param Object... - 쿼리문 ?의 데이터값
 	 * @return ResultSet
 	 */
 	public static ResultSet update(String sql, Object... p) {
@@ -98,7 +98,7 @@ public class CommonFrame extends JFrame {
 	/**
 	 * 오디오 파일 생성 후 실행 시켜주는 메소드 입니다.
 	 * 
-	 * @param filePath, String
+	 * @param filePath, String - 오디오 파일 경로
 	 * @return Clip
 	 */
 	public Clip audio(String filePath) {
