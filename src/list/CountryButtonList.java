@@ -11,16 +11,16 @@ import javax.swing.JButton;
  * @version 1.0
  *
  */
-public class ButtonList {
-	private static ArrayList<JButton> arr = new ArrayList<>();
+public class CountryButtonList {
+	private static ArrayList<JButton> countryButtonList = new ArrayList<>();
 
 	/**
 	 * 나라 button list를 반환하는 메소드입니다.
 	 * 
 	 * @return ArrayList<JButton>
 	 */
-	public static ArrayList<JButton> getArr() {
-		return arr;
+	public static ArrayList<JButton> getCountryButtonList() {
+		return countryButtonList;
 	}
 
 	/**
@@ -28,8 +28,8 @@ public class ButtonList {
 	 * 
 	 * @param ArrayList<JButton> - 초기화 할 list
 	 */
-	public static void setArr(ArrayList<JButton> arr) {
-		ButtonList.arr = arr;
+	public static void setCountryButtonList(ArrayList<JButton> countryButtonList) {
+		CountryButtonList.countryButtonList = countryButtonList;
 	}
 
 	/**
@@ -37,8 +37,8 @@ public class ButtonList {
 	 * 
 	 * @param JButton - 추가할 버튼
 	 */
-	public static void insertArr(JButton btn) {
-		arr.add(btn);
+	public static void insertCountryButton(JButton countryButton) {
+		countryButtonList.add(countryButton);
 	}
 
 	/**
@@ -47,7 +47,7 @@ public class ButtonList {
 	 * @param index, int - 해당 list값의 인덱스
 	 * @return JButton
 	 */
-	public static JButton findButtonArr(int index) {
-		return arr.get(index);
+	public static JButton findCountryButton(int index) {
+		return countryButtonList.get(index);
 	}
 }

@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import list.ButtonList;
+import list.CountryButtonList;
  
 /**
  * 각각의 플레이어 패널입니다.
