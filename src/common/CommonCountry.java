@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import list.ButtonList;
+import list.CountryButtonList;
 
 /**
  * panel클래스가 공통적으로 가지고 있어야 할 것들을 갖고 있는 클래스입니다.
@@ -56,7 +56,7 @@ public class CommonCountry {
 
 			// 각 버튼 생성 후 list에 해당 버튼 추가
 			btn = new JButton(new ImageIcon(img));
-			ButtonList.insertArr(btn);
+			CountryButtonList.insertCountryButton(btn);
 
 			btn.setPreferredSize(new Dimension(buttonW, buttonH));
 			panel.add(btn);

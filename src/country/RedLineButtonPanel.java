@@ -5,7 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 import common.CommonCountry;
-import list.ButtonList;
+import list.CountryButtonList;
 import player.PlayerPanel;
 
 /**

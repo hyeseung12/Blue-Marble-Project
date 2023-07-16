@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
-import list.ButtonList;
+import list.CountryButtonList;
 
 /**
  * 각 보드 판의 설명 tool tip을 보여주는 클래스입니다.
@@ -15,7 +15,7 @@ import list.ButtonList;
  */
 public class CountryButtonToolTipText {
 	public CountryButtonToolTipText() {
-		var buttonList = ButtonList.getArr(); // 버튼의 리스트
+		var buttonList = CountryButtonList.getCountryButtonList(); // 버튼의 리스트
 		int i = 0;
 		try {
 			BufferedReader bufReader = new BufferedReader(
@@ -30,6 +30,6 @@ public class CountryButtonToolTipText {
 			e.printStackTrace();
 		}
 
-		ButtonList.setArr(buttonList);
+		CountryButtonList.setCountryButtonList(buttonList);
 	}
 }
