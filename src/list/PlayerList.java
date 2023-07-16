@@ -1,6 +1,7 @@
 package list;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JLabel;
 
@@ -13,7 +14,7 @@ import javax.swing.JLabel;
  */
 public class PlayerList {
 	private static ArrayList<JLabel> playerList = new ArrayList<>();
-	private static ArrayList<Integer> playerPositionList = new ArrayList<>();
+	private static ArrayList<Integer> playerPositionList = new ArrayList<>(List.of(0, 0, 0, 0));
 
 	/**
 	 * player list를 반환하는 메소드입니다.

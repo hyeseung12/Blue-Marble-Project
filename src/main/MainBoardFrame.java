@@ -39,8 +39,8 @@ public class MainBoardFrame extends CommonFrame {
 
 		// 나라의 정보tip 텍스트입니다.
 		new CountryButtonToolTipText();
-		
-		CountryButtonList.findCountryButton(6).add(new PlayerPanel());
+
+		CountryButtonList.findCountryButton(0).add(new PlayerPanel());
  	}
 
 	public static void main(String[] args) {
