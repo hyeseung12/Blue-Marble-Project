@@ -11,6 +11,8 @@ import country.CountryDetailPanel;
 import country.GreenLineButtonPanel;
 import country.OrangeLineButtonPanel;
 import country.RedLineButtonPanel;
+import list.ButtonList;
+import player.PlayerPanel;
 
 /**
  * 메인 게임 보드를 그리는 클래스입니다.
@@ -37,8 +39,9 @@ public class MainBoardFrame extends CommonFrame {
 
 		// 나라의 정보tip 텍스트입니다.
 		new CountryButtonToolTipText();
+		
+		ButtonList.findButtonArr(6).add(new PlayerPanel());
  	}
-	
 
 	public static void main(String[] args) {
 		new MainBoardFrame().setVisible(true);
