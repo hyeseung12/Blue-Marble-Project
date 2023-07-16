@@ -25,7 +25,10 @@ public class PlayerPanel extends JPanel {
 		
 		createPlayer();
 	}
-	
+
+	/**
+	 * 플레이어를 초기화 하는 메소드입니다.
+	 */
 	public void createPlayer() {
 		int[][] coordinates = { 
 	            { 5, 10 }, 
