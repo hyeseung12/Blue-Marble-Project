@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import common.CommonImage;
 import dice.DicePanel;
+import player.PlayerPanel;
 
 /**
  * 나라의 자세한 정보(통행료, 대지료 등)를 보여주는 패널 클래스입니다.
@@ -52,8 +53,12 @@ public class CountryDetailPanel extends JPanel {
 		        
 		        // 주사위 패널을 이미지 패널 위에 추가
 		        img.add(dicePanel);
+		        PlayerPanel.playerOrder = 0;
+		        PlayerPanel.movePlayer();
 		    
-			} else DicePanel.startDiceRoll(); // 생성이 되었다면 주사위 굴리기
+			} else {
+				DicePanel.startDiceRoll(); // 생성이 되었다면 주사위 굴리기
+			}
 		    
 		    diceClickBtn.setVisible(false); // 주사위를 굴릴때는 클릭 버튼 안보이게 하기
 		});
