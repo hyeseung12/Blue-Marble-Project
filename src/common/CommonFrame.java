@@ -60,9 +60,10 @@ public class CommonFrame extends JFrame {
 	 * @return ResultSet
 	 */
 	public static ResultSet getRs(String sql, Object... p) {
+		int pLength = p.length;
 		try {
 			var pst = con.prepareStatement(sql);
-			for (int i = 0; i < p.length; i++) {
+			for (int i = 0; i < pLength; i++) {
 				pst.setObject(i + 1, p[i]);
 			}
 
@@ -81,9 +82,10 @@ public class CommonFrame extends JFrame {
 	 * @return ResultSet
 	 */
 	public static ResultSet update(String sql, Object... p) {
+		int pLength = p.length;
 		try {
 			var pst = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			for (int i = 0; i < p.length; i++) {
+			for (int i = 0; i < pLength; i++) {
 				pst.setObject(i + 1, p[i]);
 			}
 

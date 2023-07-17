@@ -31,7 +31,8 @@ public class PlayerPanel extends JPanel {
 	public void createPlayer() {
 		int[][] coordinates = { { 5, 10 }, { 70, 8 }, { 6, 70 }, { 70, 70 } }; // 좌표 배열
 
-		for (int i = 0; i < label.length; i++) {
+		int length = label.length;
+		for (int i = 0; i < length; i++) {
 			Image img = new ImageIcon("./images/플레이어_" + (i + 1) + ".png").getImage().getScaledInstance(110, 120,
 					java.awt.Image.SCALE_SMOOTH);
 			label[i] = new JLabel(new ImageIcon(img));

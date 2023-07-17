@@ -24,8 +24,7 @@ public class DicePanel extends JPanel {
 
 	public DicePanel() {
 		setLayout(new FlowLayout(FlowLayout.CENTER, 48, 30));
-
-		for (int i = 0; i < diceBtn.length; i++) {
+		for (int i = 0; i < 2; i++) {
 			diceBtn[i] = new JButton();
 			diceBtn[i].setOpaque(true);
 			diceBtn[i].setContentAreaFilled(true);
