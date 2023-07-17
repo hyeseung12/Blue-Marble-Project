@@ -59,7 +59,7 @@ public class PlayerPanel extends JPanel {
 		totalMovePosition = position + diceNum; // 최종으로 가야 하는 위치
 
 		// 한바퀴(총 24칸) 돌았을 경우 -> 해당 플레이어의 위치는 한바퀴를 뺀 나머지
-		totalMovePosition = (totalMovePosition > 23) ? totalMovePosition - 24 : totalMovePosition;
+		totalMovePosition = (totalMovePosition >= 23) ? (totalMovePosition - 23) : totalMovePosition;
 
 		Timer playerMoveTimer = new Timer(100, new ActionListener() {
 			private int currentPosition = position + 1; // 현재 위치
@@ -71,8 +71,9 @@ public class PlayerPanel extends JPanel {
 
 				SwingUtilities.invokeLater(() -> {
 					// 이전 위치의 플레이어 이미지 제거
-					CountryButtonList.findCountryButton(currentPosition - 1).remove(PlayerList.findPlayer(playerOrder));
-					repaintComponent(currentPosition - 1);
+	                CountryButtonList.findCountryButton((currentPosition - 1 == 0) ? 23 : currentPosition - 1).remove(PlayerList.findPlayer(playerOrder));
+	                repaintComponent((currentPosition - 1 == 0) ? 23 : currentPosition - 1);
+
 
 					// 현재 위치에 플레이어 이미지 추가
 					CountryButtonList.findCountryButton(currentPosition).add(PlayerList.findPlayer(playerOrder));
@@ -104,7 +105,7 @@ public class PlayerPanel extends JPanel {
 	
 	/**
 	 * Component를 새로 그리는 메소드입니다.
-	 * @param buttonIndex
+	 * @param buttonIndex, int - repaint 할 button의 index
 	 */
 	public static void repaintComponent(int buttonIndex) {
 		CountryButtonList.findCountryButton(buttonIndex).revalidate();
