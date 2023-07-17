@@ -97,7 +97,6 @@ public class DicePanel extends JPanel {
 	            } else {
 	            	setFinalButtonImage();	// 최종 숫자의 주사위 보여주기
 	                cancel();
-	                CountryDetailPanel.diceClickBtn.setVisible(true);
 	            }
 	        }
 	    };

@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
+import country.CountryDetailPanel;
 import list.CountryButtonList;
 import list.DiceNumberList;
 import list.PlayerList;
@@ -82,6 +83,7 @@ public class PlayerPanel extends JPanel {
 
 				if (currentPosition == totalMovePosition) {
 					((Timer) e.getSource()).stop(); // 애니메이션 종료
+	                CountryDetailPanel.diceClickBtn.setVisible(true);
 				}
 			}
 		});
