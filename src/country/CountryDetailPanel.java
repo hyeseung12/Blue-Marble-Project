@@ -18,7 +18,11 @@ import dice.DicePanel;
  * @version 1.0
  */
 public class CountryDetailPanel extends JPanel {
+	// 클래스 수준에서 주사위 패널을 선언
+	DicePanel dicePanel;
+	
 	public static JButton diceClickBtn = new JButton("주사위 돌리기");
+	
 	/**
 	 * 기본 패널은 보드 이미지를 보여줍니다.
 	 */
@@ -39,14 +43,19 @@ public class CountryDetailPanel extends JPanel {
 
 		// 주사위 돌리기 버튼을 클릭했을 경우
 		diceClickBtn.addActionListener(e -> {
-			diceClickBtn.setVisible(false);
-			// 주사위 패널 생성
-			DicePanel dicePanel = new DicePanel();
-			dicePanel.setOpaque(false); // DicePanel을 투명하게 설정
-			dicePanel.setBounds(100, 210, 400, 200);
-
-			// 주사위 패널을 이미지 패널 위에 추가
-			img.add(dicePanel);
+		    
+			// 아직 dicePanel이 생성되지 않았다면
+			if (dicePanel == null) {
+		        dicePanel = new DicePanel();	// DicePanel을 새로 생성
+		        dicePanel.setOpaque(false); // DicePanel을 투명하게 설정
+		        dicePanel.setBounds(100, 210, 400, 200);
+		        
+		        // 주사위 패널을 이미지 패널 위에 추가
+		        img.add(dicePanel);
+		    
+			} else DicePanel.startDiceRoll(); // 생성이 되었다면 주사위 굴리기
+		    
+		    diceClickBtn.setVisible(false); // 주사위를 굴릴때는 클릭 버튼 안보이게 하기
 		});
 	}
 
