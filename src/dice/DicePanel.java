@@ -1,5 +1,6 @@
 package dice;
 
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Image;
@@ -25,12 +26,18 @@ public class DicePanel extends JPanel {
 
 	public DicePanel() {
 		setLayout(new FlowLayout(FlowLayout.CENTER, 48, 30));
-		
 		initDiceButton();		// 주사위 생성
-		randomDiceNumber(); 	// 랜덤으로 숫자 돌리기
-		randomThreadDice();		// 랜덤으로 주사위 돌리기
+		startDiceRoll();		// 주사위 굴리기
 	}
-
+	
+	/**
+	 * 주사위를 굴리는 메소드입니다.
+	 */
+	public static void startDiceRoll() {
+		randomDiceNumber();
+		randomThreadDice();
+	}
+	
 	/**
 	 * 주사위를 생성 및 초기화하는 메소드입니다.
 	 */
@@ -49,7 +56,7 @@ public class DicePanel extends JPanel {
 	/**
 	 * 랜덤으로 주사위 숫자를 정하는 메소드입니다.
 	 */
-	private void randomDiceNumber() {
+	private static void randomDiceNumber() {
 		int diceNum1 = (int) (Math.random() * 6 + 1);
 		int diceNum2 = (int) (Math.random() * 6 + 1);
 
