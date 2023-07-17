@@ -60,7 +60,6 @@ public class PlayerPanel extends JPanel {
 
 		// 한바퀴(총 24칸) 돌았을 경우 -> 해당 플레이어의 위치는 한바퀴를 뺀 나머지
 		totalMovePosition = (totalMovePosition > 23) ? totalMovePosition - 24 : totalMovePosition;
-		PlayerList.setPlayerPosition(playerOrder, totalMovePosition);
 
 		Timer playerMoveTimer = new Timer(100, new ActionListener() {
 			private int currentPosition = position + 1; // 현재 위치
@@ -73,16 +72,11 @@ public class PlayerPanel extends JPanel {
 				SwingUtilities.invokeLater(() -> {
 					// 이전 위치의 플레이어 이미지 제거
 					CountryButtonList.findCountryButton(currentPosition - 1).remove(PlayerList.findPlayer(playerOrder));
-
-					CountryButtonList.findCountryButton(currentPosition - 1).revalidate();
-					CountryButtonList.findCountryButton(currentPosition - 1).repaint();
+					repaintComponent(currentPosition - 1);
 
 					// 현재 위치에 플레이어 이미지 추가
 					CountryButtonList.findCountryButton(currentPosition).add(PlayerList.findPlayer(playerOrder));
-
-					// 컴포넌트 다시 그리기
-					CountryButtonList.findCountryButton(currentPosition).revalidate();
-					CountryButtonList.findCountryButton(currentPosition).repaint();
+					repaintComponent(currentPosition);
 				});
 
 				if (currentPosition == totalMovePosition) {
@@ -94,10 +88,11 @@ public class PlayerPanel extends JPanel {
 		Timer delayTimer = new Timer(1500, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 이전 위치의 플레이어 이미지 제거
-				CountryButtonList.findCountryButton(position).remove(PlayerList.findPlayer(playerOrder));
-				CountryButtonList.findCountryButton(position).revalidate();
-				CountryButtonList.findCountryButton(position).repaint();
+				SwingUtilities.invokeLater(() -> {
+					// 이전 위치의 플레이어 이미지 제거
+					CountryButtonList.findCountryButton(position).remove(PlayerList.findPlayer(playerOrder));
+					repaintComponent(position);
+				});
 
 				playerMoveTimer.start(); // 플레이어 이동 타이머 시작
 			}
@@ -105,5 +100,14 @@ public class PlayerPanel extends JPanel {
 
 		delayTimer.setRepeats(false); // 한 번만 실행하도록 설정
 		delayTimer.start(); // 지연 타이머 시작
+	}
+	
+	/**
+	 * Component를 새로 그리는 메소드입니다.
+	 * @param buttonIndex
+	 */
+	public static void repaintComponent(int buttonIndex) {
+		CountryButtonList.findCountryButton(buttonIndex).revalidate();
+		CountryButtonList.findCountryButton(buttonIndex).repaint();
 	}
 }
