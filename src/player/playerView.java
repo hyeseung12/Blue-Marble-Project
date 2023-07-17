@@ -64,6 +64,57 @@ public class playerView {
 		playerListFrame.add(playerPanel);
 		playerListFrame.setVisible(true);
 	}
+	
+	public void CityListView() {
+
+		cityListFrame.setSize(400, 800);
+	    cityListFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    
+	    JPanel cityListPanel1 = new JPanel(null);
+		JButton cityListBtn = new JButton("나라 List");
+		cityListBtn.setSize(400, 60);
+		cityListBtn.setVisible(true);
+		cityListBtn.setBackground(Color.YELLOW);
+		cityListPanel1.setBounds(0, 5, 400, 60);
+		cityListPanel1.add(cityListBtn);
+
+	    JPanel cityListPanel = new JPanel();
+	    cityListPanel.setLayout(new BoxLayout(cityListPanel, BoxLayout.Y_AXIS));
+
+	    List<String> cityList = getCityList();
+
+	 // TODO: 나라를 획득할 때마다 해당 나라가 추가되게 하기
+	    
+	    for (int i = 0; i < cityList.size(); i++) {
+	        JPanel playerCityPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	        
+	        ImageIcon icon = new ImageIcon("./images/" + cityList.get(i) + ".png");
+	        Image resizedImage = icon.getImage().getScaledInstance(200, 250, Image.SCALE_SMOOTH);
+	        ImageIcon resizedIcon = new ImageIcon(resizedImage);
+	        JLabel cityImageLabel = new JLabel(resizedIcon);
+
+	        playerCityPanel.add(cityImageLabel);
+	        playerCityPanel.add(cityImageLabel);
+	        cityListPanel.add(playerCityPanel);
+	    }
+
+	    JScrollPane scrollPane = new JScrollPane(cityListPanel);
+	    scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+	    cityListFrame.add(cityListPanel1);
+	    cityListFrame.add(scrollPane);
+	    cityListFrame.setVisible(true);
+	}
+	
+	private List<String> getCityList() {
+		// TODO: 필요한 나라 목록을 가져오는 로직 구현
+		List<String> cityList = new ArrayList<>();
+		cityList.add("1");
+		cityList.add("4");
+		cityList.add("5");
+		cityList.add("7");
+		return cityList;
+	}
 
 	public static void main(String[] args) {
 		new playerView();
