@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 import country.CountryDetailPanel;
 import list.DiceNumberList;
+import player.PlayerPanel;
 
 /**
  * 주사위를 돌릴 패널입니다.
@@ -27,7 +28,8 @@ public class DicePanel extends JPanel {
 	public DicePanel() {
 		setLayout(new FlowLayout(FlowLayout.CENTER, 48, 30));
 		initDiceButton();		// 주사위 생성
-		startDiceRoll();		// 주사위 굴리기
+		randomDiceNumber();		// 랜덤 주사위 수 결정
+		randomThreadDice();		// 랜덤 주사위 돌리기
 	}
 	
 	/**
@@ -36,6 +38,9 @@ public class DicePanel extends JPanel {
 	public static void startDiceRoll() {
 		randomDiceNumber();
 		randomThreadDice();
+		++PlayerPanel.playerOrder;
+		if(PlayerPanel.playerOrder == 4) PlayerPanel.playerOrder = 0;
+		PlayerPanel.movePlayer();
 	}
 	
 	/**

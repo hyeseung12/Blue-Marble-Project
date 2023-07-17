@@ -11,7 +11,6 @@ import country.CountryDetailPanel;
 import country.GreenLineButtonPanel;
 import country.OrangeLineButtonPanel;
 import country.RedLineButtonPanel;
-import list.CountryButtonList;
 import player.PlayerPanel;
 
 /**
@@ -39,8 +38,9 @@ public class MainBoardFrame extends CommonFrame {
 
 		// 나라의 정보tip 텍스트입니다.
 		new CountryButtonToolTipText();
+		
+		new PlayerPanel();
 
-		CountryButtonList.findCountryButton(0).add(new PlayerPanel());
  	}
 
 	public static void main(String[] args) {
