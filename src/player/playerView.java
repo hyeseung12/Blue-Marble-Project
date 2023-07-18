@@ -1,13 +1,15 @@
 package player;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
+import java.awt.Component;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -64,56 +66,79 @@ public class playerView {
 		playerListFrame.add(playerPanel);
 		playerListFrame.setVisible(true);
 	}
-	
+
 	public void CityListView() {
 
 		cityListFrame.setSize(400, 800);
-	    cityListFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    
-	    JPanel cityListPanel1 = new JPanel(null);
-		JButton cityListBtn = new JButton("나라 List");
-		cityListBtn.setSize(400, 60);
-		cityListBtn.setVisible(true);
-		cityListBtn.setBackground(Color.YELLOW);
-		cityListPanel1.setBounds(0, 5, 400, 60);
-		cityListPanel1.add(cityListBtn);
+		cityListFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	    JPanel cityListPanel = new JPanel();
-	    cityListPanel.setLayout(new BoxLayout(cityListPanel, BoxLayout.Y_AXIS));
+		JPanel cityListPanel = new JPanel();
+		// BoxLayout: 위에서 아래로, 혹은 왼쪽에서 오른쪽으로 차례로 컴포넌트를 배치
+		cityListPanel.setLayout(new BoxLayout(cityListPanel, BoxLayout.Y_AXIS)); // 상 -> 하 배치
 
-	    List<String> cityList = getCityList();
+		List<List<String>> playerCityList = getPlayerCityList(); // 각 플레이어의 도시 목록을 가져옴
 
-	 // TODO: 나라를 획득할 때마다 해당 나라가 추가되게 하기
-	    
-	    for (int i = 0; i < cityList.size(); i++) {
-	        JPanel playerCityPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-	        
-	        ImageIcon icon = new ImageIcon("./images/" + cityList.get(i) + ".png");
-	        Image resizedImage = icon.getImage().getScaledInstance(200, 250, Image.SCALE_SMOOTH);
-	        ImageIcon resizedIcon = new ImageIcon(resizedImage);
-	        JLabel cityImageLabel = new JLabel(resizedIcon);
+		for (int i = 0; i < playerCityList.size(); i++) { // 4
+			JPanel playerPanel = new JPanel(); // 각 플레이어의 Panel
+			playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
+			JLabel playerLabel = new JLabel("플레이어 " + (i + 1));
+			playerLabel.setFont(new Font("GOTHIC", Font.BOLD, 25));
+			playerPanel.setAlignmentX(Component.CENTER_ALIGNMENT); // 플레이어 라벨을 중앙 정렬
+			playerPanel.add(Box.createVerticalStrut(40)); // 40 픽셀의 빈 공간이 추가
+            playerPanel.add(playerLabel);
+            playerPanel.add(Box.createVerticalStrut(20));
+            
+			List<String> cityList = playerCityList.get(i); // 해당 플레이어의 도시 목록을 가져옴
 
-	        playerCityPanel.add(cityImageLabel);
-	        playerCityPanel.add(cityImageLabel);
-	        cityListPanel.add(playerCityPanel);
-	    }
+			for (String city : cityList) {
+				ImageIcon icon = new ImageIcon("./images/" + city + ".png");
+				Image resizedImage = icon.getImage().getScaledInstance(200, 250, Image.SCALE_SMOOTH); // 이미지 크기 설정
+				ImageIcon resizedIcon = new ImageIcon(resizedImage);
+				JLabel cityImageLabel = new JLabel(resizedIcon); // 도시 카드 이미지 Label
+				
+				cityImageLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // 도시 이미지를 중앙 정렬
+				playerPanel.add(cityImageLabel);
+				playerPanel.add(Box.createVerticalStrut(10));
+			}
 
-	    JScrollPane scrollPane = new JScrollPane(cityListPanel);
-	    scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+			cityListPanel.add(playerPanel);
+		}
 
-	    cityListFrame.add(cityListPanel1);
-	    cityListFrame.add(scrollPane);
-	    cityListFrame.setVisible(true);
+		JScrollPane scrollPane = new JScrollPane(cityListPanel);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+		cityListFrame.add(scrollPane);
+		cityListFrame.setVisible(true);
 	}
-	
-	private List<String> getCityList() {
-		// TODO: 필요한 나라 목록을 가져오는 로직 구현
-		List<String> cityList = new ArrayList<>();
-		cityList.add("1");
-		cityList.add("4");
-		cityList.add("5");
-		cityList.add("7");
-		return cityList;
+
+	private List<List<String>> getPlayerCityList() {
+		// TODO: 각 플레이어가 획득한 나라 add하는 로직 구현
+		// 임시로 지정하여 add함
+		List<List<String>> playerCityList = new ArrayList<>();
+
+		// 플레이어 1의 나라 목록
+		List<String> player1CityList = new ArrayList<>();
+		player1CityList.add("1");
+		player1CityList.add("4");
+		player1CityList.add("5");
+		playerCityList.add(player1CityList);
+
+		// 플레이어 2의 나라 목록
+		List<String> player2CityList = new ArrayList<>();
+		player2CityList.add("7");
+		playerCityList.add(player2CityList);
+
+		// 플레이어 3의 나라 목록
+		List<String> player3CityList = new ArrayList<>();
+		player3CityList.add("8");
+		player3CityList.add("10");
+		playerCityList.add(player3CityList);
+
+		// 플레이어 4의 나라 목록
+		List<String> player4CityList = new ArrayList<>();
+		playerCityList.add(player4CityList);
+
+		return playerCityList;
 	}
 
 	public static void main(String[] args) {
