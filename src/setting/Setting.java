@@ -2,6 +2,13 @@ package setting;
 
 import java.sql.DriverManager;
 
+/**
+ * DB를 연결하고 초기화하는 Setting 파일입니다.
+ * 
+ * @author phinsso
+ * @version 1.0
+ */
+
 public class Setting {
 	static void initDB() throws Exception {
 		// 서버 연결, 파일 허용 (클라이언트 쪽)
