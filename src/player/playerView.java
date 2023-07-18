@@ -1,11 +1,13 @@
 package player;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +20,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import common.CommonFrame;
+import main.MainBoardFrame;
+
 /**
  * 플레이어에게 표시되는 점수 프레임과 보유 도시 프레임입니다.
  * 
@@ -25,19 +30,17 @@ import javax.swing.JScrollPane;
  * @version 1.0
  */
 
-public class playerView {
-	JFrame playerListFrame = new JFrame("플레이어 목록");
-
+public class playerView extends CommonFrame {
 	JFrame cityListFrame = new JFrame("플레이어 나라 목록");
 
-	public playerView() {
-		playerListView();
-	}
+    public playerView(MainBoardFrame mainBoardFrame) {
+        super("플레이어 목록", 400, 800);
+        setLocation(mainBoardFrame.getLocation().x + mainBoardFrame.getWidth(), mainBoardFrame.getLocation().y);
+        setLayout(new BorderLayout());
+        playerListView();
+    }
 
 	public void playerListView() {
-		playerListFrame.setSize(400, 800);
-		playerListFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		JPanel cityBtnPanel = new JPanel(null);
 		JPanel playerPanel = new JPanel(null);
 
@@ -62,9 +65,8 @@ public class playerView {
 			}
 		});
 
-		playerListFrame.add(cityBtnPanel);
-		playerListFrame.add(playerPanel);
-		playerListFrame.setVisible(true);
+		add(cityBtnPanel);
+		add(playerPanel);
 	}
 
 	public void CityListView() {
@@ -139,9 +141,5 @@ public class playerView {
 		playerCityList.add(player4CityList);
 
 		return playerCityList;
-	}
-
-	public static void main(String[] args) {
-		new playerView();
 	}
 }
