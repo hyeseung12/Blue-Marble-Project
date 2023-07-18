@@ -7,10 +7,12 @@ import java.awt.Component;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import common.CommonImage;
 import dice.DicePanel;
 import player.PlayerPanel;
+import player.PlayerView;
 
 /**
  * 나라의 자세한 정보(통행료, 대지료 등)를 보여주는 패널 클래스입니다.
@@ -29,7 +31,7 @@ public class CountryDetailPanel extends JPanel {
 	 */
 	public CountryDetailPanel() {
 		setLayout(new BorderLayout());
-
+		
 		// 이미지 패널 생성
 		CommonImage img = new CommonImage(new ImageIcon("./images/부루마불.png").getImage());
 
@@ -57,6 +59,7 @@ public class CountryDetailPanel extends JPanel {
 		        PlayerPanel.movePlayer();
 		    
 			} else {
+				PlayerView.playerIconLabel[PlayerPanel.playerOrder].setBorder(new LineBorder(null)); // 이전 턴 플레이어의 borderline 없애기
 				DicePanel.startDiceRoll(); // 생성이 되었다면 주사위 굴리기
 			}
 		    

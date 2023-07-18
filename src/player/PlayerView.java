@@ -27,10 +27,11 @@ import main.MainBoardFrame;
  * @version 1.0
  */
 
-public class playerView extends CommonFrame {
+public class PlayerView extends CommonFrame {
 	private MainBoardFrame mainBoardFrame;
+	public static JLabel[] playerIconLabel = new JLabel[4];
 
-	public playerView(MainBoardFrame mainBoardFrame) {
+	public PlayerView(MainBoardFrame mainBoardFrame) {
 		super("플레이어 목록", 400, 900);
 		this.mainBoardFrame = mainBoardFrame;
 		setLocation(mainBoardFrame.getLocation().x + mainBoardFrame.getWidth(), mainBoardFrame.getLocation().y);
@@ -48,11 +49,11 @@ public class playerView extends CommonFrame {
 		cityOpenBtn.setPreferredSize(new Dimension(400, 70));
 		cityOpenBtn.setBackground(Color.YELLOW);
 
-		for (int i = 1; i <= 4; i++) {
-			Image img = new ImageIcon("./images/플레이어점수" + i + ".png").getImage().getScaledInstance(400, 194,
+		for (int i = 0; i < 4; i++) {
+			Image img = new ImageIcon("./images/플레이어점수" + (i + 1) + ".png").getImage().getScaledInstance(400, 154,
 					java.awt.Image.SCALE_SMOOTH);
-			JLabel iconLabel = new JLabel(new ImageIcon(img));
-			playerPanel.add(iconLabel);
+			playerIconLabel[i] = new JLabel(new ImageIcon(img));
+			playerPanel.add(playerIconLabel[i]);
 		}
 
 		cityOpenBtn.addActionListener(e -> CityListView());
