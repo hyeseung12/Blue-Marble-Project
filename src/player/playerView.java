@@ -1,21 +1,15 @@
 package player;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -35,7 +29,7 @@ import main.MainBoardFrame;
 
 public class playerView extends CommonFrame {
 	private MainBoardFrame mainBoardFrame;
-	
+
 	public playerView(MainBoardFrame mainBoardFrame) {
 		super("플레이어 목록", 400, 900);
 		this.mainBoardFrame = mainBoardFrame;
@@ -72,70 +66,62 @@ public class playerView extends CommonFrame {
 	 */
 	public void CityListView() {
 		JFrame cityListFrame = new JFrame("플레이어 나라 목록");
-		cityListFrame.setSize(400, 900);
-		cityListFrame.setLocation(mainBoardFrame.getLocation().x - cityListFrame.getWidth(), mainBoardFrame.getLocation().y);
+		JPanel cityListPanel = new JPanel(new GridLayout(0, 1));
 
-		JPanel cityListPanel = new JPanel();
-		// BoxLayout: 위에서 아래로, 혹은 왼쪽에서 오른쪽으로 차례로 컴포넌트를 배치
-		cityListPanel.setLayout(new BoxLayout(cityListPanel, BoxLayout.Y_AXIS)); // 상 -> 하 배치
-
-		List<List<String>> playerCityList = getPlayerCityList(); // 각 플레이어의 도시 목록을 가져옴
+		List<List<Integer>> playerCityList = getPlayerCityList(); // 각 플레이어의 도시 목록을 가져옴
 
 		for (int i = 0; i < playerCityList.size(); i++) { // 4
-			JPanel playerPanel = new JPanel(); // 각 플레이어의 Panel
-			playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
+			// 플레이어 라벨 지정
 			JLabel playerLabel = new JLabel("플레이어 " + (i + 1));
 			playerLabel.setFont(new Font("GOTHIC", Font.BOLD, 25));
-			playerPanel.setAlignmentX(Component.CENTER_ALIGNMENT); // 플레이어 라벨을 중앙 정렬
-			playerPanel.add(Box.createVerticalStrut(40)); // 40 픽셀의 빈 공간이 추가
-			playerPanel.add(playerLabel);
-			playerPanel.add(Box.createVerticalStrut(20));
+			playerLabel.setBorder(BorderFactory.createEmptyBorder(/*위*/30, /*왼쪽*/50, /*아래*/30, /*오른쪽*/50));
+			playerLabel.setHorizontalAlignment(0); 
+			cityListPanel.add(playerLabel);
 
-			List<String> cityList = playerCityList.get(i); // 해당 플레이어의 도시 목록을 가져옴
+			List<Integer> cityList = playerCityList.get(i); // 해당 플레이어의 도시 목록을 가져옴
 
-			for (String city : cityList) {
-				ImageIcon icon = new ImageIcon("./images/" + city + ".png");
-				Image resizedImage = icon.getImage().getScaledInstance(200, 250, Image.SCALE_SMOOTH); // 이미지 크기 설정
-				ImageIcon resizedIcon = new ImageIcon(resizedImage);
-				JLabel cityImageLabel = new JLabel(resizedIcon); // 도시 카드 이미지 Label
+			// 각 플레이어의 도시 목록 보여주기
+			for (int city : cityList) {
+				Image resizedImage = new ImageIcon("./images/" + city + ".png").getImage().getScaledInstance(200, 250,
+						Image.SCALE_SMOOTH); // 이미지 크기 설정
+				JLabel cityImageLabel = new JLabel(new ImageIcon(resizedImage)); // 도시 카드 이미지 Label
 
-				cityImageLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // 도시 이미지를 중앙 정렬
-				playerPanel.add(cityImageLabel);
-				playerPanel.add(Box.createVerticalStrut(10));
+				cityImageLabel.setBorder(BorderFactory.createEmptyBorder(/*위*/20, /*왼쪽*/50, /*아래*/100, /*오른쪽*/50));
+				cityListPanel.add(cityImageLabel);
 			}
-
-			cityListPanel.add(playerPanel);
 		}
 
 		cityListFrame.add(new JScrollPane(cityListPanel));
+		cityListFrame.setSize(400, 900);
+		cityListFrame.setLocation(mainBoardFrame.getLocation().x - cityListFrame.getWidth(),
+				mainBoardFrame.getLocation().y);
 		cityListFrame.setVisible(true);
 	}
 
-	private List<List<String>> getPlayerCityList() {
+	/**
+	 * 각 플레이어가 획득한 나라를 보여주는 리스트입니다.
+	 * 
+	 * @return List<List<Integer>>
+	 */
+	private List<List<Integer>> getPlayerCityList() {
 		// TODO: 각 플레이어가 획득한 나라 add하는 로직 구현
 		// 임시로 지정하여 add함
-		List<List<String>> playerCityList = new ArrayList<>();
+		List<List<Integer>> playerCityList = new ArrayList<>();
 
 		// 플레이어 1의 나라 목록
-		List<String> player1CityList = new ArrayList<>();
-		player1CityList.add("1");
-		player1CityList.add("4");
-		player1CityList.add("5");
+		List<Integer> player1CityList = new ArrayList<>(List.of(1));
 		playerCityList.add(player1CityList);
 
 		// 플레이어 2의 나라 목록
-		List<String> player2CityList = new ArrayList<>();
-		player2CityList.add("7");
+		List<Integer> player2CityList = new ArrayList<>(List.of(4, 5));
 		playerCityList.add(player2CityList);
 
 		// 플레이어 3의 나라 목록
-		List<String> player3CityList = new ArrayList<>();
-		player3CityList.add("8");
-		player3CityList.add("10");
+		List<Integer> player3CityList = new ArrayList<>(List.of(7, 8, 10));
 		playerCityList.add(player3CityList);
 
 		// 플레이어 4의 나라 목록
-		List<String> player4CityList = new ArrayList<>();
+		List<Integer> player4CityList = new ArrayList<>(List.of(20));
 		playerCityList.add(player4CityList);
 
 		return playerCityList;
