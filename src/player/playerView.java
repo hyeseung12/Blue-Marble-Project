@@ -32,9 +32,11 @@ import main.MainBoardFrame;
 
 public class playerView extends CommonFrame {
 	JFrame cityListFrame = new JFrame("플레이어 나라 목록");
-
+	private MainBoardFrame mainBoardFrame;
+	
 	public playerView(MainBoardFrame mainBoardFrame) {
 		super("플레이어 목록", 400, 900);
+		this.mainBoardFrame = mainBoardFrame;
 		setLocation(mainBoardFrame.getLocation().x + mainBoardFrame.getWidth(), mainBoardFrame.getLocation().y);
 		setLayout(new BorderLayout());
 		playerListView();
@@ -65,9 +67,8 @@ public class playerView extends CommonFrame {
 	}
 
 	public void CityListView() {
-
-		cityListFrame.setSize(400, 800);
-		cityListFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		cityListFrame.setSize(400, 900);
+		cityListFrame.setLocation(mainBoardFrame.getLocation().x - cityListFrame.getWidth(), mainBoardFrame.getLocation().y);
 
 		JPanel cityListPanel = new JPanel();
 		// BoxLayout: 위에서 아래로, 혹은 왼쪽에서 오른쪽으로 차례로 컴포넌트를 배치
