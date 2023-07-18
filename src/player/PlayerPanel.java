@@ -32,9 +32,10 @@ public class PlayerPanel extends JPanel {
 		setLayout(null);
 		setSize(30, 30);
 		setOpaque(false);
-		
+
 		createPlayer();
-		PlayerView.playerIconLabel[0].setBorder(new LineBorder(Color.black, 20)); // 첫번째 순서, 첫번째 턴 플레이어는 무조건 setBorder 시키기
+		PlayerView.playerIconLabel[0].setBorder(new LineBorder(Color.black, 20)); // 첫번째 순서, 첫번째 턴 플레이어는 무조건 setBorder
+																					// 시키기
 	}
 
 	/**
@@ -63,21 +64,22 @@ public class PlayerPanel extends JPanel {
 		totalMovePosition = position + diceNum; // 최종으로 가야 하는 위치
 
 		// 한바퀴(총 24칸) 돌았을 경우 -> 해당 플레이어의 위치는 한바퀴를 뺀 나머지
-		totalMovePosition = (totalMovePosition >= 23) ? (totalMovePosition - 23) : totalMovePosition;
+		totalMovePosition = (totalMovePosition > 23) ? (totalMovePosition - 24) : totalMovePosition;
 
-		Timer playerMoveTimer = new Timer(100, new ActionListener() {
-			private int currentPosition = position + 1; // 현재 위치
+		Timer playerMoveTimer = new Timer(130, new ActionListener() {
+			private int currentPosition = position; // 현재 위치
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				currentPosition = (currentPosition % 23) + 1; // 다음 위치 계산
+				currentPosition++;
+				if(currentPosition == 24) currentPosition = 0;
 				PlayerList.setPlayerPosition(playerOrder, currentPosition); // 플레이어 위치 업데이트
-
+				
 				SwingUtilities.invokeLater(() -> {
 					// 이전 위치의 플레이어 이미지 제거
-	                CountryButtonList.findCountryButton((currentPosition - 1 == 0) ? 23 : currentPosition - 1).remove(PlayerList.findPlayer(playerOrder));
-	                repaintComponent((currentPosition - 1 == 0) ? 23 : currentPosition - 1);
-
+					CountryButtonList.findCountryButton((currentPosition == 0) ? 23 : currentPosition - 1)
+							.remove(PlayerList.findPlayer(playerOrder));
+					repaintComponent((currentPosition == 0) ? 23 : currentPosition - 1);
 
 					// 현재 위치에 플레이어 이미지 추가
 					CountryButtonList.findCountryButton(currentPosition).add(PlayerList.findPlayer(playerOrder));
@@ -86,7 +88,7 @@ public class PlayerPanel extends JPanel {
 
 				if (currentPosition == totalMovePosition) {
 					((Timer) e.getSource()).stop(); // 애니메이션 종료
-	                CountryDetailPanel.diceClickBtn.setVisible(true);
+					CountryDetailPanel.diceClickBtn.setVisible(true);
 				}
 			}
 		});
@@ -107,9 +109,10 @@ public class PlayerPanel extends JPanel {
 		delayTimer.setRepeats(false); // 한 번만 실행하도록 설정
 		delayTimer.start(); // 지연 타이머 시작
 	}
-	
+
 	/**
 	 * Component를 새로 그리는 메소드입니다.
+	 * 
 	 * @param buttonIndex, int - repaint 할 button의 index
 	 */
 	public static void repaintComponent(int buttonIndex) {
