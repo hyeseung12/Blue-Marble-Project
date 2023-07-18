@@ -34,7 +34,7 @@ public class playerView extends CommonFrame {
 	JFrame cityListFrame = new JFrame("플레이어 나라 목록");
 
     public playerView(MainBoardFrame mainBoardFrame) {
-        super("플레이어 목록", 400, 800);
+        super("플레이어 목록", 400, 900);
         setLocation(mainBoardFrame.getLocation().x + mainBoardFrame.getWidth(), mainBoardFrame.getLocation().y);
         setLayout(new BorderLayout());
         playerListView();
@@ -54,7 +54,7 @@ public class playerView extends CommonFrame {
 		for (int i = 0; i < 4; i++) {
 			ImageIcon icon = new ImageIcon("./images/플레이어점수" + (i + 1) + ".png");
 			JLabel iconLabel = new JLabel(icon);
-			iconLabel.setBounds(0, (i + 1) * 62 + (i * 113), 400, 180);
+			iconLabel.setBounds(0, (i + 1) * 75 + (i * 120), 400, 180);
 			playerPanel.add(iconLabel);
 		}
 
