@@ -12,6 +12,7 @@ import country.GreenLineButtonPanel;
 import country.OrangeLineButtonPanel;
 import country.RedLineButtonPanel;
 import player.PlayerPanel;
+import player.playerView;
 
 /**
  * 메인 게임 보드를 그리는 클래스입니다.
@@ -44,7 +45,9 @@ public class MainBoardFrame extends CommonFrame {
  	}
 
 	public static void main(String[] args) {
-		new MainBoardFrame().setVisible(true);
+		MainBoardFrame mainBoardFrame = new MainBoardFrame();
+	    new MainBoardFrame().setVisible(true);
+	    new playerView(mainBoardFrame).setVisible(true);
 	}
 
 }
