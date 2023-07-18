@@ -3,7 +3,10 @@ package player;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,42 +34,44 @@ import main.MainBoardFrame;
  */
 
 public class playerView extends CommonFrame {
-	JFrame cityListFrame = new JFrame("플레이어 나라 목록");
 	private MainBoardFrame mainBoardFrame;
 	
 	public playerView(MainBoardFrame mainBoardFrame) {
 		super("플레이어 목록", 400, 900);
 		this.mainBoardFrame = mainBoardFrame;
 		setLocation(mainBoardFrame.getLocation().x + mainBoardFrame.getWidth(), mainBoardFrame.getLocation().y);
-		setLayout(new BorderLayout());
+		setLayout(new FlowLayout());
 		playerListView();
 	}
 
+	/**
+	 * 플레이어 목록을 보여주는 메소드입니다.
+	 */
 	public void playerListView() {
-		JPanel cityBtnPanel = new JPanel(null);
-		JPanel playerPanel = new JPanel(null);
+		JPanel playerPanel = new JPanel(new GridLayout(0, 1));
 
-		JButton cityOpenBtn = new JButton("나라");
-		cityOpenBtn.setSize(400, 60);
-		cityOpenBtn.setVisible(true);
+		JButton cityOpenBtn = new JButton("플레이어 나라");
+		cityOpenBtn.setPreferredSize(new Dimension(400, 70));
 		cityOpenBtn.setBackground(Color.YELLOW);
-		cityBtnPanel.setBounds(0, 5, 400, 60);
-		cityBtnPanel.add(cityOpenBtn);
 
-		for (int i = 0; i < 4; i++) {
-			ImageIcon icon = new ImageIcon("./images/플레이어점수" + (i + 1) + ".png");
-			JLabel iconLabel = new JLabel(icon);
-			iconLabel.setBounds(0, (i + 1) * 75 + (i * 120), 400, 180);
+		for (int i = 1; i <= 4; i++) {
+			Image img = new ImageIcon("./images/플레이어점수" + i + ".png").getImage().getScaledInstance(400, 194,
+					java.awt.Image.SCALE_SMOOTH);
+			JLabel iconLabel = new JLabel(new ImageIcon(img));
 			playerPanel.add(iconLabel);
 		}
 
 		cityOpenBtn.addActionListener(e -> CityListView());
 
-		add(cityBtnPanel);
+		add(cityOpenBtn);
 		add(playerPanel);
 	}
 
+	/**
+	 * 플레이어의 나라 목록을 보여주는 메소드입니다.
+	 */
 	public void CityListView() {
+		JFrame cityListFrame = new JFrame("플레이어 나라 목록");
 		cityListFrame.setSize(400, 900);
 		cityListFrame.setLocation(mainBoardFrame.getLocation().x - cityListFrame.getWidth(), mainBoardFrame.getLocation().y);
 
@@ -102,10 +107,7 @@ public class playerView extends CommonFrame {
 			cityListPanel.add(playerPanel);
 		}
 
-		JScrollPane scrollPane = new JScrollPane(cityListPanel);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
-		cityListFrame.add(scrollPane);
+		cityListFrame.add(new JScrollPane(cityListPanel));
 		cityListFrame.setVisible(true);
 	}
 
