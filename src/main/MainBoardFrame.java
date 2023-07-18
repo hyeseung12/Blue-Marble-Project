@@ -46,7 +46,7 @@ public class MainBoardFrame extends CommonFrame {
 
 	public static void main(String[] args) {
 		MainBoardFrame mainBoardFrame = new MainBoardFrame();
-	    new MainBoardFrame().setVisible(true);
+	    mainBoardFrame.setVisible(true);
 	    new playerView(mainBoardFrame).setVisible(true);
 	}
 
