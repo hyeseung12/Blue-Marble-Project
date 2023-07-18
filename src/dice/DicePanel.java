@@ -1,6 +1,6 @@
 package dice;
 
-import java.awt.Container;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Image;
@@ -10,10 +10,11 @@ import java.util.TimerTask;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
-import country.CountryDetailPanel;
 import list.DiceNumberList;
 import player.PlayerPanel;
+import player.PlayerView;
 
 /**
  * 주사위를 돌릴 패널입니다.
@@ -40,6 +41,7 @@ public class DicePanel extends JPanel {
 		randomThreadDice();
 		++PlayerPanel.playerOrder;
 		if(PlayerPanel.playerOrder == 4) PlayerPanel.playerOrder = 0;
+		PlayerView.playerIconLabel[PlayerPanel.playerOrder].setBorder(new LineBorder(Color.black, 20)); // 현재 턴 플레이어의 borderline 생성
 		PlayerPanel.movePlayer();
 	}
 	

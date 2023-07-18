@@ -1,5 +1,6 @@
 package player;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+import javax.swing.border.LineBorder;
 
 import country.CountryDetailPanel;
 import list.CountryButtonList;
@@ -30,14 +32,15 @@ public class PlayerPanel extends JPanel {
 		setLayout(null);
 		setSize(30, 30);
 		setOpaque(false);
-
+		
 		createPlayer();
+		PlayerView.playerIconLabel[0].setBorder(new LineBorder(Color.black, 20)); // 첫번째 순서, 첫번째 턴 플레이어는 무조건 setBorder 시키기
 	}
 
 	/**
 	 * 플레이어를 초기화 하는 메소드입니다.
 	 */
-	public void createPlayer() {
+	public static void createPlayer() {
 		int length = label.length;
 		for (int i = 0; i < length; i++) {
 			Image img = new ImageIcon("./images/플레이어_" + (i + 1) + ".png").getImage().getScaledInstance(110, 120,
