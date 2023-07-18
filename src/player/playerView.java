@@ -33,12 +33,12 @@ import main.MainBoardFrame;
 public class playerView extends CommonFrame {
 	JFrame cityListFrame = new JFrame("플레이어 나라 목록");
 
-    public playerView(MainBoardFrame mainBoardFrame) {
-        super("플레이어 목록", 400, 900);
-        setLocation(mainBoardFrame.getLocation().x + mainBoardFrame.getWidth(), mainBoardFrame.getLocation().y);
-        setLayout(new BorderLayout());
-        playerListView();
-    }
+	public playerView(MainBoardFrame mainBoardFrame) {
+		super("플레이어 목록", 400, 900);
+		setLocation(mainBoardFrame.getLocation().x + mainBoardFrame.getWidth(), mainBoardFrame.getLocation().y);
+		setLayout(new BorderLayout());
+		playerListView();
+	}
 
 	public void playerListView() {
 		JPanel cityBtnPanel = new JPanel(null);
@@ -58,12 +58,7 @@ public class playerView extends CommonFrame {
 			playerPanel.add(iconLabel);
 		}
 
-		cityOpenBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				CityListView();
-			}
-		});
+		cityOpenBtn.addActionListener(e -> CityListView());
 
 		add(cityBtnPanel);
 		add(playerPanel);
@@ -87,9 +82,9 @@ public class playerView extends CommonFrame {
 			playerLabel.setFont(new Font("GOTHIC", Font.BOLD, 25));
 			playerPanel.setAlignmentX(Component.CENTER_ALIGNMENT); // 플레이어 라벨을 중앙 정렬
 			playerPanel.add(Box.createVerticalStrut(40)); // 40 픽셀의 빈 공간이 추가
-            playerPanel.add(playerLabel);
-            playerPanel.add(Box.createVerticalStrut(20));
-            
+			playerPanel.add(playerLabel);
+			playerPanel.add(Box.createVerticalStrut(20));
+
 			List<String> cityList = playerCityList.get(i); // 해당 플레이어의 도시 목록을 가져옴
 
 			for (String city : cityList) {
@@ -97,7 +92,7 @@ public class playerView extends CommonFrame {
 				Image resizedImage = icon.getImage().getScaledInstance(200, 250, Image.SCALE_SMOOTH); // 이미지 크기 설정
 				ImageIcon resizedIcon = new ImageIcon(resizedImage);
 				JLabel cityImageLabel = new JLabel(resizedIcon); // 도시 카드 이미지 Label
-				
+
 				cityImageLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // 도시 이미지를 중앙 정렬
 				playerPanel.add(cityImageLabel);
 				playerPanel.add(Box.createVerticalStrut(10));
