@@ -13,6 +13,7 @@ import javax.swing.Timer;
 import javax.swing.border.LineBorder;
 
 import country.CountryDetailPanel;
+import dice.DicePanel;
 import list.CountryButtonList;
 import list.DiceNumberList;
 import list.PlayerList;
@@ -34,8 +35,7 @@ public class PlayerPanel extends JPanel {
 		setOpaque(false);
 
 		createPlayer();
-		PlayerView.playerIconLabel[0].setBorder(new LineBorder(Color.black, 20)); // 첫번째 순서, 첫번째 턴 플레이어는 무조건 setBorder
-																					// 시키기
+		PlayerView.playerIconLabel[0].setBorder(new LineBorder(Color.black, 20)); // 첫번째 순서, 첫번째 턴 플레이어는 무조건 setBorder 시키기
 	}
 
 	/**
@@ -88,6 +88,7 @@ public class PlayerPanel extends JPanel {
 
 				if (currentPosition == totalMovePosition) {
 					((Timer) e.getSource()).stop(); // 애니메이션 종료
+					
 					CountryDetailPanel.diceClickBtn.setVisible(true);
 				}
 			}

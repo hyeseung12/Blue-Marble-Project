@@ -11,6 +11,7 @@ import javax.swing.border.LineBorder;
 
 import common.CommonImage;
 import dice.DicePanel;
+import list.DiceNumberList;
 import player.PlayerPanel;
 import player.PlayerView;
 
@@ -46,6 +47,7 @@ public class CountryDetailPanel extends JPanel {
 
 		// 주사위 돌리기 버튼을 클릭했을 경우
 		diceClickBtn.addActionListener(e -> {
+			diceClickBtn.setVisible(false); // 주사위를 굴릴때는 클릭 버튼 안보이게 하기
 		    
 			// 아직 dicePanel이 생성되지 않았다면
 			if (dicePanel == null) {
@@ -57,13 +59,28 @@ public class CountryDetailPanel extends JPanel {
 		        img.add(dicePanel);
 		        PlayerPanel.playerOrder = 0;
 		        PlayerPanel.movePlayer();
-		    
+		        
 			} else {
+
+				// 주사위가 더블일 경우 다음 순서로 넘어가지 않고 곧바로 주사위 돌리기
+				if (DiceNumberList.getDiceNum1() == DiceNumberList.getDiceNum2()) {
+					DicePanel.doubleDiceCount++;
+					DicePanel.startDiceRoll();
+					PlayerPanel.movePlayer();
+					return;
+				}
+				
 				PlayerView.playerIconLabel[PlayerPanel.playerOrder].setBorder(new LineBorder(null)); // 이전 턴 플레이어의 borderline 없애기
+
+				++PlayerPanel.playerOrder;
+				if (PlayerPanel.playerOrder == 4)
+					PlayerPanel.playerOrder = 0;
+
+				PlayerView.playerIconLabel[PlayerPanel.playerOrder].setBorder(new LineBorder(Color.black, 20)); // 현재 턴 플레이어의 borderline 생성
+				
 				DicePanel.startDiceRoll(); // 생성이 되었다면 주사위 굴리기
+				PlayerPanel.movePlayer();
 			}
-		    
-		    diceClickBtn.setVisible(false); // 주사위를 굴릴때는 클릭 버튼 안보이게 하기
 		});
 	}
 
