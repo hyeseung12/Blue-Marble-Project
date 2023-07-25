@@ -72,10 +72,10 @@ public class CountryDetailPanel extends JPanel {
 					if(DicePanel.doubleDiceCount == 3) {
 						SwingUtilities.invokeLater(() -> {
 							// 현재 위치 플레이어 삭제
-							CountryButtonList.findCountryButton(PlayerList.findPlayerPosition(PlayerPanel.playerOrder)).remove(PlayerList.findPlayer(PlayerPanel.playerOrder));
+							CountryButtonList.getCountryButton(PlayerList.getPlayerPosition(PlayerPanel.playerOrder)).remove(PlayerList.getPlayer(PlayerPanel.playerOrder));
 
 							// 무인도로 플레이어 이동
-							CountryButtonList.findCountryButton(6).add(PlayerList.findPlayer(PlayerPanel.playerOrder));
+							CountryButtonList.getCountryButton(6).add(PlayerList.getPlayer(PlayerPanel.playerOrder));
 						});
 						
 						DicePanel.doubleDiceCount = 0;

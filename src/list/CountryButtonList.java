@@ -47,7 +47,7 @@ public class CountryButtonList {
 	 * @param index, int - 해당 list값의 인덱스
 	 * @return JButton
 	 */
-	public static JButton findCountryButton(int index) {
+	public static JButton getCountryButton(int index) {
 		return countryButtonList.get(index);
 	}
 }

@@ -48,7 +48,7 @@ public class PlayerPanel extends JPanel {
 					java.awt.Image.SCALE_SMOOTH);
 			label[i] = new JLabel(new ImageIcon(img));
 			PlayerList.insertPlayer(label[i]);
-			CountryButtonList.findCountryButton(0).add(PlayerList.findPlayer(i));
+			CountryButtonList.getCountryButton(0).add(PlayerList.getPlayer(i));
 		}
 	}
 
@@ -57,7 +57,7 @@ public class PlayerPanel extends JPanel {
 	 */
 	public static void movePlayer() {
 
-		int position = PlayerList.findPlayerPosition(playerOrder); // 현재 위치
+		int position = PlayerList.getPlayerPosition(playerOrder); // 현재 위치
 
 		int diceNum = DiceNumberList.getDiceNum1() + DiceNumberList.getDiceNum2(); // 주사위 수
 
@@ -77,12 +77,12 @@ public class PlayerPanel extends JPanel {
 				
 				SwingUtilities.invokeLater(() -> {
 					// 이전 위치의 플레이어 이미지 제거
-					CountryButtonList.findCountryButton((currentPosition == 0) ? 23 : currentPosition - 1)
-							.remove(PlayerList.findPlayer(playerOrder));
+					CountryButtonList.getCountryButton((currentPosition == 0) ? 23 : currentPosition - 1)
+							.remove(PlayerList.getPlayer(playerOrder));
 					repaintComponent((currentPosition == 0) ? 23 : currentPosition - 1);
 
 					// 현재 위치에 플레이어 이미지 추가
-					CountryButtonList.findCountryButton(currentPosition).add(PlayerList.findPlayer(playerOrder));
+					CountryButtonList.getCountryButton(currentPosition).add(PlayerList.getPlayer(playerOrder));
 					repaintComponent(currentPosition);
 				});
 
@@ -99,7 +99,7 @@ public class PlayerPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				SwingUtilities.invokeLater(() -> {
 					// 이전 위치의 플레이어 이미지 제거
-					CountryButtonList.findCountryButton(position).remove(PlayerList.findPlayer(playerOrder));
+					CountryButtonList.getCountryButton(position).remove(PlayerList.getPlayer(playerOrder));
 					repaintComponent(position);
 				});
 
@@ -117,7 +117,7 @@ public class PlayerPanel extends JPanel {
 	 * @param buttonIndex, int - repaint 할 button의 index
 	 */
 	public static void repaintComponent(int buttonIndex) {
-		CountryButtonList.findCountryButton(buttonIndex).revalidate();
-		CountryButtonList.findCountryButton(buttonIndex).repaint();
+		CountryButtonList.getCountryButton(buttonIndex).revalidate();
+		CountryButtonList.getCountryButton(buttonIndex).repaint();
 	}
 }

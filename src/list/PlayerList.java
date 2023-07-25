@@ -49,7 +49,7 @@ public class PlayerList {
 	 * @param index, int - 해당 list값의 인덱스
 	 * @return JLabel
 	 */
-	public static JLabel findPlayer(int index) {
+	public static JLabel getPlayer(int index) {
 		return playerList.get(index);
 	}
 
@@ -87,7 +87,7 @@ public class PlayerList {
 	 * @param index - 위치 값 찾을 플레이어 index
 	 * @return int
 	 */
-	public static int findPlayerPosition(int index) {
+	public static int getPlayerPosition(int index) {
 		return playerPositionList.get(index);
 	}
 }
