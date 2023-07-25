@@ -2,16 +2,18 @@ package country;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 
 import common.CommonImage;
 import dice.DicePanel;
+import list.CountryButtonList;
 import list.DiceNumberList;
+import list.PlayerList;
 import player.PlayerPanel;
 import player.PlayerView;
 
@@ -24,15 +26,15 @@ import player.PlayerView;
 public class CountryDetailPanel extends JPanel {
 	// 클래스 수준에서 주사위 패널을 선언
 	DicePanel dicePanel;
-	
+
 	public static JButton diceClickBtn = new JButton("주사위 돌리기");
-	
+
 	/**
 	 * 기본 패널은 보드 이미지를 보여줍니다.
 	 */
 	public CountryDetailPanel() {
 		setLayout(new BorderLayout());
-		
+
 		// 이미지 패널 생성
 		CommonImage img = new CommonImage(new ImageIcon("./images/부루마불.png").getImage());
 
@@ -48,28 +50,47 @@ public class CountryDetailPanel extends JPanel {
 		// 주사위 돌리기 버튼을 클릭했을 경우
 		diceClickBtn.addActionListener(e -> {
 			diceClickBtn.setVisible(false); // 주사위를 굴릴때는 클릭 버튼 안보이게 하기
-		    
+
 			// 아직 dicePanel이 생성되지 않았다면
 			if (dicePanel == null) {
-		        dicePanel = new DicePanel();	// DicePanel을 새로 생성
-		        dicePanel.setOpaque(false); // DicePanel을 투명하게 설정
-		        dicePanel.setBounds(100, 210, 400, 200);
-		        
-		        // 주사위 패널을 이미지 패널 위에 추가
-		        img.add(dicePanel);
-		        PlayerPanel.playerOrder = 0;
-		        PlayerPanel.movePlayer();
-		        
+				dicePanel = new DicePanel();	// DicePanel을 새로 생성
+				dicePanel.setOpaque(false); // DicePanel을 투명하게 설정
+				dicePanel.setBounds(100, 210, 400, 200);
+
+				// 주사위 패널을 이미지 패널 위에 추가
+				img.add(dicePanel);
+				PlayerPanel.playerOrder = 0;
+				PlayerPanel.movePlayer();
+
 			} else {
 
 				// 주사위가 더블일 경우 다음 순서로 넘어가지 않고 곧바로 주사위 돌리기
 				if (DiceNumberList.getDiceNum1() == DiceNumberList.getDiceNum2()) {
 					DicePanel.doubleDiceCount++;
-					DicePanel.startDiceRoll();
-					PlayerPanel.movePlayer();
+
+					// 3번 이상 더블일 경우 무인도 행
+					if(DicePanel.doubleDiceCount == 3) {
+						SwingUtilities.invokeLater(() -> {
+							// 현재 위치 플레이어 삭제
+							CountryButtonList.findCountryButton(PlayerList.findPlayerPosition(PlayerPanel.playerOrder)).remove(PlayerList.findPlayer(PlayerPanel.playerOrder));
+
+							// 무인도로 플레이어 이동
+							CountryButtonList.findCountryButton(6).add(PlayerList.findPlayer(PlayerPanel.playerOrder));
+						});
+						
+						DicePanel.doubleDiceCount = 0;
+					}
+
+					else {
+						DicePanel.startDiceRoll();
+						PlayerPanel.movePlayer();
+					}
+
 					return;
 				}
 				
+				DicePanel.doubleDiceCount = 0;
+
 				PlayerView.playerIconLabel[PlayerPanel.playerOrder].setBorder(new LineBorder(null)); // 이전 턴 플레이어의 borderline 없애기
 
 				++PlayerPanel.playerOrder;
@@ -77,7 +98,7 @@ public class CountryDetailPanel extends JPanel {
 					PlayerPanel.playerOrder = 0;
 
 				PlayerView.playerIconLabel[PlayerPanel.playerOrder].setBorder(new LineBorder(Color.black, 20)); // 현재 턴 플레이어의 borderline 생성
-				
+
 				DicePanel.startDiceRoll(); // 생성이 되었다면 주사위 굴리기
 				PlayerPanel.movePlayer();
 			}
